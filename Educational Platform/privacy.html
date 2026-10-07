@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية | الشعيب ALSHUAIB</title>
+  <meta name="description" content="سياسة الخصوصية في منصة الشعيب التعليمية — كيف نحفظ بياناتك ونحميها.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%234f46e5'/><path d='M5 10.5 12 7l7 3.5L12 14z' fill='white'/><path d='M8 13.2v3c2.4 1.9 5.6 1.9 8 0v-3l-4 2z' fill='white' opacity='.85'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-2: #7c3aed;
+      --primary-soft: #eef2ff;
+      --ink: #0f172a;
+      --text: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(15, 23, 42, .06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container { width: min(860px, 92%); margin-inline: auto; }
+
+    .page-header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .8rem 0;
+    }
+    .logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+    .logo-badge {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      display: grid; place-items: center; color: #fff; flex-shrink: 0;
+    }
+    .logo-badge svg { width: 1.35rem; height: 1.35rem; }
+    .logo-text { line-height: 1.15; }
+    .logo-text strong { display: block; color: var(--ink); font-size: 1.2rem; font-weight: 800; }
+    .logo-text small { display: block; color: var(--muted); font-size: .65rem; font-weight: 700; letter-spacing: 2px; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: .45rem;
+      text-decoration: none; font-weight: 700; font-size: .9rem;
+      color: var(--primary); background: var(--primary-soft);
+      padding: .5rem 1.05rem; border-radius: 999px; transition: .2s;
+      white-space: nowrap;
+    }
+    .back-link:hover { background: var(--primary); color: #fff; }
+    .back-link svg { width: 1rem; height: 1rem; }
+
+    main { flex: 1; padding: 3rem 0 4rem; }
+
+    .kicker {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--primary-soft); color: var(--primary);
+      font-weight: 700; font-size: .85rem; padding: .35rem 1.05rem; border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    h1 { color: var(--ink); font-size: clamp(1.6rem, 4vw, 2.15rem); font-weight: 800; line-height: 1.5; }
+    .updated { color: var(--muted); font-size: .88rem; margin-top: .4rem; }
+
+    .doc-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 2.2rem 2.4rem; margin-top: 2rem;
+    }
+
+    .doc-card h2 {
+      display: flex; align-items: center; gap: .6rem;
+      color: var(--ink); font-size: 1.12rem; font-weight: 800;
+      margin: 2rem 0 .7rem;
+    }
+    .doc-card h2:first-child { margin-top: 0; }
+    .doc-card h2::before {
+      content: ''; width: .5rem; height: 1.15rem; border-radius: 99px;
+      background: linear-gradient(180deg, var(--primary), var(--primary-2));
+      flex-shrink: 0;
+    }
+    .doc-card p { margin-bottom: .6rem; }
+    .doc-card ul { padding-inline-start: 1.5rem; margin: .4rem 0 .9rem; }
+    .doc-card li { margin: .45rem 0; }
+    .doc-card li::marker { color: var(--primary); }
+    .doc-card a { color: var(--primary); font-weight: 700; text-decoration: none; }
+    .doc-card a:hover { text-decoration: underline; }
+
+    .note {
+      background: var(--primary-soft); border: 1px solid #dfe3ff; border-radius: 12px;
+      padding: .9rem 1.1rem; margin: .9rem 0; font-size: .92rem; color: var(--ink);
+    }
+
+    .page-footer {
+      border-top: 1px solid var(--border); background: #fff;
+      padding: 1.4rem 0; text-align: center;
+    }
+    .page-footer p { color: var(--muted); font-size: .85rem; }
+    .page-footer a { color: var(--primary); font-weight: 700; text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .doc-card { padding: 1.5rem 1.3rem; }
+      .header-inner { flex-direction: column; gap: .6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="الشعيب">
+      <span class="logo-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </span>
+      <span class="logo-text"><strong>الشعيب</strong><small>ALSHUAIB</small></span>
+    </a>
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      العودة إلى المنصة
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <span class="kicker">صفحات قانونية</span>
+    <h1>سياسة الخصوصية</h1>
+    <p class="updated">آخر تحديث: 7 أكتوبر 2026</p>
+
+    <div class="doc-card">
+      <h2>1. مقدمة</h2>
+      <p>نأخذ خصوصيتك على محمل الجد في منصة «الشعيب». توضح هذه السياسة ما نجمعه من بيانات، وكيف نحفظه ونحميه، وحقوقك تجاهه. باستخدامك للمنصة فأنت توافق على ما ورد في هذه السياسة.</p>
+
+      <h2>2. البيانات التي نجمعها</h2>
+      <p>عند إنشاء حساب في المنصة نحفظ فقط:</p>
+      <ul>
+        <li>الاسم الكامل الذي تدخله عند التسجيل.</li>
+        <li>البريد الإلكتروني (ويُستخدم كمعرّف وحيد لحسابك).</li>
+        <li>تاريخ إنشاء الحساب.</li>
+      </ul>
+      <p>لا نطلب أي بيانات أخرى، ولا نجمع أي معلومات عن جهازك أو موقعك الجغرافي.</p>
+
+      <h2>3. أين تُحفظ بياناتك</h2>
+      <div class="note">بياناتك تُحفظ محلياً داخل متصفحك أنت (عبر تقنية التخزين المحلي localStorage)، ولا تُرسل إلى أي خادم خارجي في هذه المرحلة.</div>
+      <ul>
+        <li>بيانات حسابك تبقى على جهازك، ولا تغادره إلى أي جهة.</li>
+        <li>إذا فتحت المنصة من جهاز آخر، لن يظهر حسابك هناك لأن البيانات غير مرتبطة بحساب سحابي.</li>
+      </ul>
+
+      <h2>4. حماية كلمة المرور</h2>
+      <ul>
+        <li>لا تُحفظ كلمة المرور كنص صريح أبداً، في أي مكان.</li>
+        <li>تُحوَّل كلمة المرور إلى بصمة مشفّرة بخوارزمية SHA-256 مع «ملح» عشوائي خاص بكل حساب، ولا يمكن استرجاع الكلمة الأصلية منها.</li>
+        <li>عند تسجيل الدخول تُعاد مقارنة البصمة فقط، دون معرفة كلمة المرور نفسها.</li>
+      </ul>
+
+      <h2>5. ما لا نفعله ببياناتك</h2>
+      <ul>
+        <li>لا نشارك بياناتك مع أي طرف ثالث.</li>
+        <li>لا نبيع بياناتك ولا نؤجّرها لأي جهة.</li>
+        <li>لا نستخدم إعلانات تتبّعية ولا أدوات تحليل خارجية.</li>
+        <li>لا نرسل رسائل تسويقية إلى بريدك الإلكتروني.</li>
+      </ul>
+
+      <h2>6. حقوقك</h2>
+      <ul>
+        <li>يمكنك حذف بياناتك نهائياً في أي وقت بمسح بيانات الموقع من إعدادات المتصفح (سجل التصفح ← بيانات المواقع).</li>
+        <li>يمكنك تسجيل الخروج من حسابك في أي وقت من لوحة الطالب.</li>
+        <li>لأي استفسار عن بياناتك، تواصل مع فريق الدعم.</li>
+      </ul>
+
+      <h2>7. تعديلات السياسة</h2>
+      <p>قد تُحدَّث هذه السياسة عند إضافة مزايا جديدة للمنصة، وسيظهر تاريخ آخر تحديث أعلى الصفحة. نُنصح بمراجعتها من وقت لآخر.</p>
+
+      <h2>8. التواصل معنا</h2>
+      <p>لأي سؤال بخصوص خصوصيتك وبياناتك:</p>
+      <ul>
+        <li>الدعم الفني (واتساب): <a href="https://wa.me/201060163505" target="_blank" rel="noopener">01060163505</a></li>
+        <li>الخط الساخن: <a href="tel:+201060163505">01060163505</a></li>
+        <li>البريد الإلكتروني: info@alshuaib.com</li>
+        <li>الدولة: مصر</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <div class="container">
+    <p>© 2026 الشعيب ALSHUAIB — جميع الحقوق محفوظة · <a href="index.html">العودة إلى المنصة</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

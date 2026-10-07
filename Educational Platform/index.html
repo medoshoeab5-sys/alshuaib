@@ -1,0 +1,3571 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الشعيب | ALSHUAIB — منصة تعليمية عربية</title>
+  <meta name="description" content="الشعيب ALSHUAIB — منصة تعليمية عربية حديثة لتعلّم المواد الدراسية بسهولة، مع متابعة تقدم الطالب خطوة بخطوة.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%234f46e5'/><path d='M5 10.5 12 7l7 3.5L12 14z' fill='white'/><path d='M8 13.2v3c2.4 1.9 5.6 1.9 8 0v-3l-4 2z' fill='white' opacity='.85'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-2: #7c3aed;
+      --primary-dark: #3730a3;
+      --primary-soft: #eef2ff;
+      --ink: #0f172a;
+      --text: #475569;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --amber: #f59e0b;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(15, 23, 42, .06);
+      --shadow-lg: 0 18px 44px rgba(79, 70, 229, .14);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+
+    body {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { color: var(--ink); line-height: 1.4; }
+
+    ::selection { background: #c7d2fe; }
+
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    .container { width: min(1140px, 92%); margin-inline: auto; }
+
+    .ic {
+      width: 1.25rem; height: 1.25rem;
+      fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+    .ic.fill { fill: currentColor; stroke: none; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+      font-family: inherit; font-size: 1rem; font-weight: 700;
+      border: none; cursor: pointer; border-radius: 12px;
+      padding: .85rem 1.8rem; transition: all .22s ease; text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff; box-shadow: 0 8px 22px rgba(79, 70, 229, .3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(79, 70, 229, .4); }
+    .btn-ghost { background: #fff; color: var(--ink); border: 1.5px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-white { background: #fff; color: var(--primary-dark); box-shadow: 0 10px 26px rgba(2, 6, 23, .25); }
+    .btn-white:hover { transform: translateY(-2px); }
+    .btn-sm { padding: .6rem 1.35rem; font-size: .95rem; border-radius: 10px; }
+    .btn-block { width: 100%; }
+
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .25s ease;
+    }
+    .header.scrolled { box-shadow: 0 6px 24px rgba(15, 23, 42, .08); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+
+    .logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    .logo-badge {
+      width: 44px; height: 44px; border-radius: 13px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      display: grid; place-items: center; color: #fff;
+      box-shadow: 0 6px 16px rgba(79, 70, 229, .35);
+    }
+    .logo-badge .ic { width: 1.45rem; height: 1.45rem; }
+    .logo-text { line-height: 1.15; }
+    .logo-text strong { display: block; color: var(--ink); font-size: 1.25rem; font-weight: 800; }
+    .logo-text small { display: block; color: var(--muted); font-size: .68rem; font-weight: 700; letter-spacing: 2px; }
+
+    .nav-links { display: flex; align-items: center; gap: 1.35rem; }
+    .nav-links a {
+      position: relative; color: var(--text); font-weight: 600; font-size: .95rem;
+      text-decoration: none; padding: .3rem 0; transition: color .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; inset-inline-start: 0;
+      width: 0; height: 2.5px; border-radius: 3px; background: var(--primary); transition: width .25s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .nav-login { display: none; }
+
+    .nav-toggle {
+      display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+      width: 46px; height: 46px; border: 1px solid var(--border); border-radius: 11px;
+      background: #fff; cursor: pointer;
+    }
+    .nav-toggle span { width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: .3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 4.5rem 0 4.2rem;
+      background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 75%);
+    }
+    .deco { position: absolute; border-radius: 50%; filter: blur(75px); opacity: .55; pointer-events: none; }
+    .deco.d1 { width: 340px; height: 340px; background: #c7d2fe; top: -90px; left: -70px; animation: decoDrift 15s ease-in-out infinite; }
+    .deco.d2 { width: 320px; height: 320px; background: #ddd6fe; bottom: -110px; right: -90px; animation: decoDrift 18s ease-in-out infinite reverse; }
+    @keyframes decoDrift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(24px, 18px); } }
+
+    .hero-wrap { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+    .hero-content { animation: fadeUp .8s ease both; }
+    .hero-visual { animation: fadeUp .8s ease .15s both; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: #fff; border: 1px solid #e0e7ff; color: var(--primary);
+      padding: .45rem 1.15rem; border-radius: 999px;
+      font-size: .88rem; font-weight: 700;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, .09);
+    }
+    .hero-badge .ic { width: 1rem; height: 1rem; color: var(--amber); }
+
+    .hero-brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.15rem; }
+    .hero-brand .logo-badge { width: 54px; height: 54px; border-radius: 16px; }
+    .hero-brand .logo-badge .ic { width: 1.75rem; height: 1.75rem; }
+    .hero-brand .logo-text strong { font-size: 1.5rem; }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.6vw, 3.15rem); font-weight: 900; line-height: 1.3;
+      margin: 1.35rem 0 1rem;
+    }
+    .hero h1 .hl { color: var(--primary); background: linear-gradient(transparent 62%, #c7d2fe 62%); padding-inline: .15rem; }
+
+    .hero .lead { font-size: 1.08rem; color: var(--text); max-width: 540px; }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2.1rem 0 1.7rem; }
+
+    @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, .38); } 70% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); } 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); } }
+    .hero-actions .btn-primary { position: relative; }
+    .hero-actions .btn-primary::after {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      pointer-events: none; animation: pulseRing 2.8s ease-out infinite;
+    }
+
+    .trust { display: flex; align-items: center; gap: .9rem; color: var(--muted); font-size: .92rem; font-weight: 600; }
+    .avatars { display: flex; }
+    .avatars .avatar { width: 42px; height: 42px; font-size: .8rem; border: 3px solid #fff; margin-inline-start: -13px; }
+    .avatars .avatar:first-child { margin-inline-start: 0; }
+    .avatars .avatar .ic { width: 1.15rem; height: 1.15rem; }
+
+    .avatar {
+      width: 2.6rem; height: 2.6rem; border-radius: 50%;
+      display: grid; place-items: center; color: #fff; font-weight: 700; flex-shrink: 0;
+    }
+    .avatar.sm { width: 1.9rem; height: 1.9rem; font-size: .72rem; }
+    .avatar.xl { width: 5rem; height: 5rem; font-size: 1.5rem; }
+    .a1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+    .a2 { background: linear-gradient(135deg, #0ea5e9, #2563eb); }
+    .a3 { background: linear-gradient(135deg, #f59e0b, #f97316); }
+    .a4 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+    .a5 { background: linear-gradient(135deg, #10b981, #0d9488); }
+    .a6 { background: linear-gradient(135deg, #14b8a6, #0891b2); }
+
+    .hero-visual { position: relative; display: grid; place-items: center; min-height: 400px; }
+    .blob {
+      position: absolute; width: min(400px, 92%); aspect-ratio: 1;
+      background: radial-gradient(circle at 35% 30%, #c7d2fe, #ede9fe 60%, #f5d0fe);
+      border-radius: 42% 58% 62% 38% / 45% 40% 60% 55%;
+      opacity: .6; animation: blobFloat 10s ease-in-out infinite;
+    }
+    @keyframes blobFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-16px) rotate(4deg); } }
+    .mock-card {
+      position: relative; z-index: 2; width: min(420px, 100%);
+      background: #fff; border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(49, 46, 129, .18);
+      padding: 1rem;
+    }
+    .mock-head { display: flex; gap: .4rem; padding: .15rem .35rem .8rem; }
+    .mock-head span { width: 11px; height: 11px; border-radius: 50%; }
+    .mock-head span:nth-child(1) { background: #f87171; }
+    .mock-head span:nth-child(2) { background: #fbbf24; }
+    .mock-head span:nth-child(3) { background: #34d399; }
+
+    .mock-video {
+      height: 172px; border-radius: 14px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: grid; place-items: center; position: relative; overflow: hidden;
+    }
+    .mock-video::after {
+      content: ''; position: absolute; width: 190px; height: 190px;
+      border: 26px solid rgba(255, 255, 255, .08); border-radius: 50%;
+      top: -70px; inset-inline-end: -60px;
+    }
+    .mock-play {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(255, 255, 255, .22); backdrop-filter: blur(6px);
+      border: 1.5px solid rgba(255, 255, 255, .55);
+      display: grid; place-items: center; color: #fff; z-index: 2;
+    }
+    .mock-play .ic { width: 1.5rem; height: 1.5rem; }
+
+    .mock-info { padding: .95rem .4rem .35rem; }
+    .mock-info h3 { font-size: .92rem; font-weight: 700; }
+    .bar-label { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); font-weight: 600; margin-top: .8rem; }
+    .bar { height: 8px; background: #e2e8f0; border-radius: 99px; overflow: hidden; margin-top: .35rem; }
+    .bar span { display: block; height: 100%; width: 65%; background: linear-gradient(90deg, var(--primary), var(--primary-2)); }
+
+    .float-pill {
+      position: absolute; z-index: 3;
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      box-shadow: 0 14px 36px rgba(15, 23, 42, .13);
+      padding: .7rem 1.05rem; display: flex; align-items: center; gap: .7rem;
+    }
+    .float-pill strong { display: block; font-size: .95rem; color: var(--ink); line-height: 1.25; }
+    .float-pill small { font-size: .75rem; color: var(--muted); }
+    .pill-1 { top: 7%; inset-inline-start: -4%; animation: float 5s ease-in-out infinite; }
+    .pill-2 { bottom: 6%; inset-inline-end: -3%; animation: float 6s ease-in-out .9s infinite; }
+    .pill-1 .ic { color: var(--amber); }
+    .pill-2 .ic { color: #10b981; }
+
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+
+    .stats {
+      position: relative; margin-top: 3.6rem;
+      background: #fff; border: 1px solid var(--border); border-radius: 20px;
+      box-shadow: var(--shadow);
+      display: grid; grid-template-columns: repeat(4, 1fr); padding: 1.9rem 1rem;
+    }
+    .stat { text-align: center; }
+    .stat + .stat { border-inline-start: 1px solid var(--border); }
+    .stat-num { font-size: clamp(1.5rem, 3vw, 1.95rem); font-weight: 800; color: var(--primary-dark); }
+    .stat-label { font-size: .92rem; color: var(--muted); font-weight: 600; }
+
+    .section { padding: 4.3rem 0; }
+    .section-head { text-align: center; margin-bottom: 2.9rem; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--primary-soft); color: var(--primary);
+      font-weight: 700; font-size: .85rem; padding: .35rem 1.05rem; border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .section-head h2 { font-size: clamp(1.55rem, 3vw, 2.15rem); font-weight: 800; margin-bottom: .55rem; }
+    .section-head .sub { max-width: 640px; margin-inline: auto; color: var(--muted); }
+
+    .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 1.4rem; }
+    .subject-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem 1.35rem; transition: all .25s ease;
+    }
+    .subject-card:hover { transform: translateY(-6px); border-color: #c7d2fe; box-shadow: var(--shadow-lg); }
+    .icon-box {
+      width: 54px; height: 54px; border-radius: 15px;
+      display: grid; place-items: center;
+    }
+    .icon-box .ic { width: 1.55rem; height: 1.55rem; }
+    .s1 { background: #eef2ff; color: #4f46e5; }
+    .s2 { background: #ecfeff; color: #0891b2; }
+    .s3 { background: #fffbeb; color: #d97706; }
+    .s4 { background: #fff1f2; color: #e11d48; }
+    .s5 { background: #ecfdf5; color: #059669; }
+    .s6 { background: #f5f3ff; color: #7c3aed; }
+    .subject-card h3 { font-size: 1.06rem; margin: 1rem 0 .25rem; }
+    .subject-card p { font-size: .88rem; color: var(--muted); font-weight: 600; }
+
+    .courses-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 2.6rem; flex-wrap: wrap; }
+    .courses-head .section-head { text-align: start; margin-bottom: 0; }
+    .courses-head .sub { margin-inline: 0; }
+    .view-all {
+      display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap;
+      color: var(--primary); font-weight: 700; text-decoration: none; font-size: .97rem;
+    }
+    .view-all:hover { text-decoration: underline; }
+
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.6rem; }
+    .course-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 18px;
+      overflow: hidden; transition: all .25s ease; display: flex; flex-direction: column;
+    }
+    .course-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; }
+    .course-banner { position: relative; height: 128px; display: grid; place-items: center; }
+    .course-banner .banner-icon { width: 3rem; height: 3rem; color: rgba(255, 255, 255, .92); }
+    .course-banner .banner-icon.ic, .course-banner .ic { stroke-width: 1.7; }
+    .g1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+    .g2 { background: linear-gradient(135deg, #0ea5e9, #2563eb); }
+    .g3 { background: linear-gradient(135deg, #f59e0b, #f97316); }
+    .g4 { background: linear-gradient(135deg, #10b981, #0d9488); }
+    .g5 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+    .g6 { background: linear-gradient(135deg, #14b8a6, #0891b2); }
+    .course-tag {
+      position: absolute; top: .85rem; inset-inline-start: .9rem;
+      background: rgba(255, 255, 255, .22); border: 1px solid rgba(255, 255, 255, .45);
+      color: #fff; font-size: .78rem; font-weight: 700;
+      padding: .22rem .85rem; border-radius: 999px; backdrop-filter: blur(4px);
+    }
+    .course-body { padding: 1.35rem; display: flex; flex-direction: column; flex: 1; }
+    .course-body h3 { font-size: 1.08rem; margin-bottom: .7rem; }
+    .course-inst { display: flex; align-items: center; gap: .55rem; font-size: .9rem; color: var(--muted); font-weight: 600; margin-bottom: 1rem; }
+    .course-meta { display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: .86rem; color: var(--text); font-weight: 600; }
+    .course-meta span { display: inline-flex; align-items: center; gap: .38rem; }
+    .course-meta .ic { width: 1.05rem; height: 1.05rem; color: var(--muted); }
+    .course-meta .star { color: var(--amber); }
+    .course-foot {
+      display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+      border-top: 1px dashed var(--border); margin-top: auto; padding-top: 1.05rem;
+    }
+    .price { display: flex; align-items: baseline; gap: .55rem; }
+    .price .now { font-size: 1.1rem; font-weight: 800; color: var(--ink); }
+    .price .now.free { color: #059669; }
+    .price .old { font-size: .85rem; color: var(--muted); text-decoration: line-through; }
+    .btn-enroll {
+      font-family: inherit; border: none; cursor: pointer;
+      background: var(--primary-soft); color: var(--primary);
+      font-weight: 800; font-size: .9rem; padding: .55rem 1.25rem; border-radius: 10px;
+      transition: all .22s ease;
+    }
+    .btn-enroll:hover { background: var(--primary); color: #fff; }
+
+    .teachers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(252px, 1fr)); gap: 1.5rem; }
+    .teacher-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 18px;
+      padding: 2rem 1.4rem; text-align: center; transition: all .25s ease;
+    }
+    .teacher-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; }
+    .teacher-card .avatar.xl { margin-inline: auto; box-shadow: 0 10px 24px rgba(15, 23, 42, .14); }
+    .teacher-card h3 { font-size: 1.12rem; margin: 1.1rem 0 .45rem; }
+    .teacher-role {
+      display: inline-block; background: var(--primary-soft); color: var(--primary);
+      font-size: .8rem; font-weight: 700; padding: .22rem .95rem; border-radius: 999px;
+    }
+    .teacher-bio { font-size: .88rem; color: var(--muted); margin: .9rem 0 1.1rem; min-height: 3.2em; }
+    .t-meta { display: flex; justify-content: center; gap: 1.3rem; font-size: .88rem; font-weight: 700; color: var(--text); }
+    .t-meta span { display: inline-flex; align-items: center; gap: .38rem; }
+    .t-meta .ic { width: 1.05rem; height: 1.05rem; color: var(--muted); }
+    .t-meta .star { color: var(--amber); }
+
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 1.4rem; }
+    .why-card {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem 1.35rem; transition: all .25s ease;
+    }
+    .why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: #c7d2fe; }
+    .why-card .icon-box { width: 48px; height: 48px; }
+    .why-card h3 { font-size: 1.03rem; margin-bottom: .3rem; }
+    .why-card p { font-size: .89rem; color: var(--muted); }
+
+    .cta {
+      position: relative; overflow: hidden; text-align: center;
+      background: linear-gradient(135deg, #312e81, var(--primary) 55%, var(--primary-2));
+      border-radius: 26px; padding: 4rem 2rem; color: #fff;
+    }
+    .cta::before, .cta::after {
+      content: ''; position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .09);
+    }
+    .cta::before { width: 260px; height: 260px; top: -110px; inset-inline-start: -70px; }
+    .cta::after { width: 320px; height: 320px; bottom: -150px; inset-inline-end: -90px; }
+    .cta h2 { color: #fff; font-size: clamp(1.6rem, 3.4vw, 2.3rem); font-weight: 800; margin-bottom: .8rem; position: relative; }
+    .cta p { max-width: 520px; margin: 0 auto 2rem; opacity: .9; position: relative; }
+    .cta .btn { position: relative; }
+
+    .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .support-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 20px;
+      padding: 2rem; box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .support-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; }
+    .support-card h3 { font-size: 1.15rem; margin-bottom: .4rem; }
+    .support-card > p { color: var(--muted); font-size: .92rem; margin-bottom: 1.5rem; }
+
+    .social-row { display: flex; flex-wrap: wrap; gap: .9rem; }
+    .social-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      min-width: 138px; padding: .85rem 1.35rem; border-radius: 14px;
+      color: #fff; font-weight: 700; font-size: .95rem; text-decoration: none;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, .16);
+      transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+    }
+    .social-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(15, 23, 42, .22); filter: brightness(1.07); }
+    .social-btn .ic { width: 1.2rem; height: 1.2rem; }
+    .sb-fb { background: linear-gradient(135deg, #1877f2, #0d5bd7); }
+    .sb-ig { background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #8134af); }
+
+    .support-list { display: grid; gap: 1.05rem; }
+    .support-list li { display: flex; align-items: center; gap: .95rem; list-style: none; }
+    .support-list .icon-box { width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0; }
+    .support-list .icon-box .ic { width: 1.3rem; height: 1.3rem; }
+    .support-list strong { display: block; font-size: .95rem; color: var(--ink); }
+    .support-list a, .support-list li > div > span { color: var(--muted); font-size: .9rem; font-weight: 600; text-decoration: none; transition: color .2s; }
+    .support-list a:hover { color: var(--primary); }
+
+    .footer { background: #0f172a; color: #94a3b8; padding-top: 4.2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 2.6rem; padding-bottom: 3rem; }
+    .footer h4 { color: #fff; font-size: 1.05rem; margin-bottom: 1.25rem; }
+    .footer .logo-text strong { color: #fff; }
+    .footer-about { font-size: .92rem; margin: 1.1rem 0 1.4rem; max-width: 300px; }
+    .social { display: flex; gap: .7rem; }
+    .social a {
+      width: 40px; height: 40px; border-radius: 11px;
+      background: rgba(255, 255, 255, .08); color: #cbd5e1;
+      display: grid; place-items: center; transition: all .22s ease;
+    }
+    .social a:hover { background: var(--primary); color: #fff; transform: translateY(-3px); }
+    .footer-links a { display: block; color: #94a3b8; text-decoration: none; font-size: .93rem; margin-bottom: .75rem; transition: color .2s, padding .2s; }
+    .footer-links a:hover { color: #a5b4fc; }
+    .footer-contact li { display: flex; align-items: flex-start; gap: .7rem; margin-bottom: .95rem; font-size: .93rem; list-style: none; }
+    .footer-contact .ic { color: #818cf8; margin-top: .2rem; }
+    .footer-contact a { color: inherit; text-decoration: none; transition: color .2s; }
+    .footer-contact a:hover { color: #a5b4fc; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .09);
+      padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; flex-wrap: wrap; font-size: .88rem;
+    }
+
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(15, 23, 42, .58); backdrop-filter: blur(5px);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; transition: .28s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-card {
+      width: min(432px, 100%); max-height: 92vh; overflow-y: auto;
+      background: #fff; border-radius: 22px; padding: 2.1rem;
+      position: relative; transform: scale(.94) translateY(12px); transition: .28s ease;
+    }
+    .modal-overlay.active .modal-card { transform: none; }
+    .modal-close {
+      position: absolute; top: 1.1rem; inset-inline-end: 1.1rem;
+      width: 38px; height: 38px; border-radius: 11px; border: none; cursor: pointer;
+      background: #f1f5f9; color: var(--muted); display: grid; place-items: center; transition: .2s;
+    }
+    .modal-close:hover { background: #fee2e2; color: #dc2626; }
+    .modal-head { text-align: center; margin-bottom: .4rem; }
+    .modal-head .logo-badge { margin-inline: auto; }
+    .modal-head h3 { font-size: 1.35rem; margin-top: 1rem; }
+    .modal-head p { font-size: .9rem; color: var(--muted); }
+
+    .auth-tabs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+      background: #f1f5f9; border-radius: 13px; padding: 4px; margin: 1.5rem 0 1.3rem;
+    }
+    .tab {
+      border: none; background: transparent; font-family: inherit;
+      padding: .68rem; border-radius: 9px; font-weight: 700; font-size: .95rem;
+      color: var(--muted); cursor: pointer; transition: .2s;
+    }
+    .tab.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(15, 23, 42, .09); }
+
+    .auth-form, .dash-form { display: none; gap: 1.05rem; }
+    .auth-form.active, .dash-form.active { display: grid; animation: slideDown .25s ease; }
+    .auth-form label, .dash-form label { display: grid; gap: .4rem; font-size: .9rem; font-weight: 700; color: var(--ink); }
+    .auth-form input, .auth-form select, .auth-form textarea, .dash-form input {
+      width: 100%; font-family: inherit; font-size: .96rem;
+      padding: .82rem 1.05rem; border: 1.5px solid var(--border); border-radius: 12px;
+      background: #f8fafc; color: var(--ink); transition: .2s;
+    }
+    .auth-form select { cursor: pointer; }
+    .auth-form textarea { resize: vertical; min-height: 92px; line-height: 1.7; }
+    .auth-form input:focus, .auth-form select:focus, .auth-form textarea:focus, .dash-form input:focus {
+      outline: none; border-color: var(--primary); background: #fff;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, .13);
+    }
+    .input-wrap { position: relative; }
+    .input-wrap .ic { position: absolute; top: 50%; transform: translateY(-50%); inset-inline-end: .95rem; color: var(--muted); pointer-events: none; }
+    .input-wrap input { padding-inline-end: 3rem; }
+    .pw-toggle {
+      position: absolute; top: 50%; transform: translateY(-50%); inset-inline-end: .55rem;
+      width: 34px; height: 34px; border: none; border-radius: 9px;
+      background: transparent; color: var(--muted); cursor: pointer;
+      display: grid; place-items: center; transition: color .2s, background .2s;
+    }
+    .pw-toggle:hover, .pw-toggle:focus-visible { color: var(--primary); background: var(--primary-soft); }
+    .pw-toggle .ic { position: static; inset-inline-end: auto; transform: none; color: inherit; width: 1.2rem; height: 1.2rem; }
+    .form-row { display: flex; justify-content: space-between; align-items: center; font-size: .88rem; }
+    .check { display: flex; align-items: center; gap: .5rem; color: var(--text); font-weight: 600; cursor: pointer; }
+    .check input { accent-color: var(--primary); width: 1.05rem; height: 1.05rem; }
+    .link { color: var(--primary); text-decoration: none; font-weight: 700; }
+    .link:hover { text-decoration: underline; }
+    .fine { font-size: .8rem; color: var(--muted); text-align: center; }
+
+    /* خلفية تبويب "حساب جديد": صورة المشروع مع طبقة داكنة شفافة فوقها ليبقى النص واضحاً.
+       تُطبَّق فقط عندما يكون تبويب إنشاء الحساب نشطاً، ولا تمسّ صفحة تسجيل الدخول. */
+    .modal-card.signup-bg {
+      background-color: #0f172a;
+      background-image:
+        linear-gradient(180deg, rgba(15, 23, 42, .55), rgba(15, 23, 42, .8)),
+        url('signup-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .modal-card.signup-bg .modal-head h3 { color: #fff; }
+    .modal-card.signup-bg .modal-head p { color: rgba(255, 255, 255, .85); }
+    .modal-card.signup-bg #formSignup label { color: rgba(255, 255, 255, .95); }
+    .modal-card.signup-bg .fine { color: rgba(255, 255, 255, .78); }
+    .modal-card.signup-bg #formSignup .link { color: #c7d2fe; }
+    .modal-card.signup-bg .modal-head h3,
+    .modal-card.signup-bg .modal-head p,
+    .modal-card.signup-bg #formSignup label { text-shadow: 0 1px 8px rgba(15, 23, 42, .55); }
+
+    /* ===== رسائل الخطأ في نماذج الحساب ===== */
+    .form-error {
+      display: flex; align-items: flex-start; gap: .55rem;
+      background: #fef2f2; border: 1.5px solid #fecaca; color: #b91c1c;
+      padding: .75rem .95rem; border-radius: 12px;
+      font-size: .88rem; font-weight: 700; line-height: 1.6;
+      animation: slideDown .22s ease;
+    }
+    .form-error::before {
+      content: '!'; width: 20px; height: 20px; border-radius: 50%;
+      background: #ef4444; color: #fff; display: grid; place-items: center;
+      font-size: .78rem; font-weight: 800; flex-shrink: 0; margin-top: .18rem;
+    }
+    .auth-form input.invalid, .auth-form select.invalid, .auth-form textarea.invalid,
+    .dash-form input.invalid {
+      border-color: #ef4444; background: #fef2f2;
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, .12);
+    }
+
+    /* ===== رسائل النجاح ===== */
+    .form-success {
+      display: flex; align-items: flex-start; gap: .55rem;
+      background: #ecfdf5; border: 1.5px solid #a7f3d0; color: #047857;
+      padding: .75rem .95rem; border-radius: 12px;
+      font-size: .88rem; font-weight: 700; line-height: 1.6;
+      animation: slideDown .22s ease;
+    }
+    .form-success::before {
+      content: '✓'; width: 20px; height: 20px; border-radius: 50%;
+      background: #10b981; color: #fff; display: grid; place-items: center;
+      font-size: .78rem; font-weight: 800; flex-shrink: 0; margin-top: .18rem;
+    }
+
+    /* ===== لوحة الطالب ===== */
+    .dashboard {
+      position: fixed; inset: 0; z-index: 90;
+      background: var(--bg); overflow-y: auto;
+      opacity: 0; visibility: hidden; transition: .3s ease;
+    }
+    .dashboard.active { opacity: 1; visibility: visible; }
+    .dash-top {
+      position: sticky; top: 0; z-index: 5;
+      background: rgba(255, 255, 255, .93); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .dash-top-inner { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding-block: .75rem; }
+    .dash-brand { display: flex; align-items: center; gap: .6rem; color: var(--ink); font-size: 1.05rem; }
+    .dash-actions { display: flex; align-items: center; gap: .6rem; }
+    .dash-hero {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff; border-radius: 22px; padding: 1.9rem 1.7rem;
+      margin: 1.4rem 0; box-shadow: var(--shadow-lg);
+    }
+    .dash-hero h2 { color: #fff; font-size: clamp(1.25rem, 3vw, 1.7rem); margin-bottom: .35rem; }
+    .dash-hero p { color: rgba(255, 255, 255, .88); font-weight: 600; }
+    .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.4rem; }
+    .dash-stat {
+      background: #fff; border: 1px solid var(--border); border-radius: 18px;
+      padding: 1.05rem 1rem; text-align: center; box-shadow: var(--shadow);
+    }
+    .dash-stat strong { display: block; font-size: 1.55rem; color: var(--primary); line-height: 1.3; }
+    .dash-stat span { font-size: .86rem; color: var(--muted); font-weight: 700; }
+    .dash-grid {
+      display: grid; grid-template-columns: 1.55fr 1fr; gap: 1.2rem;
+      align-items: start; padding-bottom: 2.6rem;
+    }
+    .dash-panel {
+      background: #fff; border: 1px solid var(--border); border-radius: 20px;
+      padding: 1.4rem; box-shadow: var(--shadow);
+    }
+    .dash-panel > h3 { display: flex; align-items: center; gap: .5rem; font-size: 1.05rem; margin-bottom: 1.05rem; }
+    .dash-panel > h3 .ic { color: var(--primary); }
+    .dash-panel .grid-empty { padding: 1.9rem 1.2rem; }
+    .account-info { list-style: none; display: grid; gap: .7rem; }
+    .account-info li {
+      display: flex; flex-direction: column; gap: .15rem;
+      background: var(--bg); border: 1px solid var(--border); border-radius: 13px;
+      padding: .7rem 1rem; font-size: .88rem;
+    }
+    .account-info li span { color: var(--muted); font-weight: 700; }
+    .account-info li strong { color: var(--ink); font-weight: 800; word-break: break-word; }
+
+    @media (max-width: 900px) {
+      .dash-grid { grid-template-columns: 1fr; }
+      .dash-stats { grid-template-columns: repeat(2, 1fr); }
+      .dash-stats.cols-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .dash-top-inner { flex-wrap: wrap; }
+      .dash-hero { padding: 1.4rem 1.2rem; }
+      .dash-actions .btn { padding: .6rem 1rem; font-size: .86rem; }
+    }
+
+    /* ===== تطوير لوحة الطالب: الملف الشخصي والتبويبات ===== */
+    .dash-body { padding-bottom: 2.6rem; }
+    .dash-pane { display: none; }
+    .dash-pane.active { display: block; animation: fadeUp .3s ease; }
+    .dash-pane .dash-grid { padding-bottom: 0; }
+    .security-panel { margin-top: 1.2rem; }
+
+    .dash-hero-inner { display: flex; align-items: center; gap: 1.15rem; }
+    .dash-hero .avatar { border: 3px solid rgba(255, 255, 255, .45); box-shadow: 0 10px 24px rgba(15, 23, 42, .28); }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .dash-hero-info { min-width: 0; }
+    .dash-hero-mail {
+      display: flex; align-items: center; gap: .45rem;
+      color: rgba(255, 255, 255, .92); font-weight: 600; font-size: .9rem;
+      margin: .1rem 0 .55rem;
+    }
+    .dash-hero-mail .ic { width: 1rem; height: 1rem; flex-shrink: 0; }
+    .dash-hero-mail span { word-break: break-all; }
+    .dash-status {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .32);
+      color: #fff; font-size: .8rem; font-weight: 700;
+      padding: .28rem .85rem; border-radius: 999px;
+    }
+    .dot { width: .5rem; height: .5rem; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 3px rgba(52, 211, 153, .28); flex-shrink: 0; }
+    .account-info li strong.acc-status { display: inline-flex; align-items: center; gap: .45rem; color: #047857; }
+    .account-info li strong.acc-status .dot { background: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, .18); }
+
+    .dash-tabs { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 1.25rem; }
+    .dash-tab {
+      font-family: inherit; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: #fff; border: 1.5px solid var(--border); color: var(--text);
+      font-weight: 700; font-size: .9rem; padding: .58rem 1.15rem;
+      border-radius: 999px; transition: all .22s ease;
+    }
+    .dash-tab .ic { width: 1rem; height: 1rem; }
+    .dash-tab:hover { border-color: #c7d2fe; color: var(--primary); background: var(--primary-soft); }
+    .dash-tab.active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 8px 18px rgba(79, 70, 229, .28); }
+
+    .avatar-edit {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+      padding-bottom: 1.05rem; border-bottom: 1px dashed var(--border);
+    }
+    .avatar-edit .avatar { border: 3px solid var(--primary-soft); }
+    .avatar-edit-col { min-width: 0; }
+    .avatar-edit-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .avatar-edit .field-note { margin-top: .5rem; }
+    .field-note { font-size: .8rem; color: var(--muted); font-weight: 600; line-height: 1.6; margin-top: -.4rem; }
+    .dash-form input:disabled { background: #f1f5f9; color: var(--muted); cursor: not-allowed; opacity: .85; }
+
+    .grid-empty .btn { margin-top: .95rem; }
+    .prog-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .prog-note { margin-top: 1rem; font-size: .85rem; color: var(--muted); font-weight: 600; text-align: center; }
+
+    @media (max-width: 600px) {
+      .dash-hero-inner { flex-direction: column; text-align: center; }
+      .dash-hero-mail { justify-content: center; }
+      .dash-tab { padding: .5rem .9rem; font-size: .84rem; }
+      .prog-stats { grid-template-columns: 1fr; }
+    }
+
+    .toast {
+      position: fixed; bottom: 1.7rem; left: 50%; z-index: 200;
+      transform: translate(-50%, 22px);
+      background: #0f172a; color: #fff;
+      padding: .95rem 1.6rem; border-radius: 14px;
+      display: flex; align-items: center; gap: .6rem;
+      font-weight: 600; font-size: .95rem;
+      box-shadow: 0 12px 34px rgba(15, 23, 42, .35);
+      opacity: 0; pointer-events: none; transition: .3s ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .toast .ic { color: #34d399; }
+
+    [hidden] { display: none !important; }
+
+    .pill-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: .55rem; margin-bottom: 2.3rem; }
+    .filter-btn {
+      font-family: inherit; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: #fff; border: 1.5px solid var(--border); color: var(--text);
+      font-weight: 700; font-size: .95rem; padding: .6rem 1.5rem; border-radius: 999px;
+      transition: all .22s ease;
+    }
+    .filter-btn .ic { width: 1.05rem; height: 1.05rem; }
+    .filter-btn:hover { border-color: #c7d2fe; color: var(--primary); }
+    .filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 6px 16px rgba(79, 70, 229, .28); }
+
+    .lectures-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.6rem; }
+    .lecture-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 18px;
+      padding: 1.45rem; display: flex; flex-direction: column; gap: 1rem;
+      transition: all .25s ease;
+    }
+    .lecture-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; }
+    .lecture-top { display: flex; justify-content: space-between; align-items: flex-start; gap: .8rem; }
+    .lecture-icon { width: 48px; height: 48px; border-radius: 13px; display: grid; place-items: center; }
+    .lecture-icon .ic { width: 1.35rem; height: 1.35rem; }
+    .status {
+      display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap;
+      font-size: .78rem; font-weight: 800; padding: .28rem .85rem; border-radius: 999px;
+    }
+    .status .ic { width: .85rem; height: .85rem; }
+    .status .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .status.live { background: #fee2e2; color: #dc2626; }
+    .status.live .dot { animation: pulse 1.4s ease infinite; }
+    .status.soon { background: #fffbeb; color: #b45309; }
+    .status.rec { background: #ecfdf5; color: #047857; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.7); } }
+    .lecture-card h3 { font-size: 1.05rem; }
+    .lecture-inst { display: flex; align-items: center; gap: .55rem; font-size: .9rem; color: var(--muted); font-weight: 600; margin-top: .45rem; }
+    .lecture-meta { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; font-size: .86rem; color: var(--text); font-weight: 600; }
+    .lecture-meta span { display: inline-flex; align-items: center; gap: .38rem; }
+    .lecture-meta .ic { width: 1.05rem; height: 1.05rem; color: var(--muted); }
+    .lecture-actions { margin-top: auto; }
+
+    .tests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+    .test-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 18px;
+      padding: 1.7rem 1.4rem; text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      transition: all .25s ease;
+    }
+    .test-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; }
+    .test-card .icon-box { width: 58px; height: 58px; border-radius: 17px; }
+    .test-card h3 { font-size: 1.05rem; margin: 1rem 0 .5rem; }
+    .difficulty { font-size: .78rem; font-weight: 800; padding: .24rem .9rem; border-radius: 999px; margin-bottom: 1rem; }
+    .difficulty.easy { background: #ecfdf5; color: #047857; }
+    .difficulty.mid { background: #fffbeb; color: #b45309; }
+    .difficulty.hard { background: #fee2e2; color: #b91c1c; }
+    .test-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: .4rem 1.2rem; font-size: .86rem; font-weight: 600; color: var(--text); margin-bottom: .9rem; }
+    .test-meta span { display: inline-flex; align-items: center; gap: .35rem; }
+    .test-meta .ic { width: 1.05rem; height: 1.05rem; color: var(--muted); }
+    .test-pass { display: inline-flex; align-items: center; gap: .35rem; font-size: .82rem; color: var(--muted); font-weight: 600; margin-bottom: 1.15rem; }
+    .test-pass .ic { width: 1rem; height: 1rem; color: #10b981; }
+    .test-card .btn { margin-top: auto; }
+
+    .quiz-progress { height: 8px; background: #e2e8f0; border-radius: 99px; overflow: hidden; margin: 1.3rem 0 .55rem; }
+    .quiz-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), var(--primary-2)); transition: width .35s ease; }
+    .quiz-count { text-align: center; font-size: .85rem; font-weight: 700; color: var(--muted); margin-bottom: 1.3rem; }
+    .quiz-q { text-align: center; font-size: 1.15rem; font-weight: 800; color: var(--ink); margin-bottom: 1.5rem; }
+    .quiz-options { display: grid; gap: .8rem; }
+    .quiz-opt {
+      font-family: inherit; cursor: pointer; text-align: start;
+      display: flex; align-items: center; gap: .8rem; width: 100%;
+      background: #f8fafc; border: 1.5px solid var(--border); border-radius: 13px;
+      padding: .9rem 1.15rem; font-size: 1rem; font-weight: 700; color: var(--ink);
+      transition: all .18s ease;
+    }
+    .quiz-opt .opt-key {
+      width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
+      background: #fff; border: 1.5px solid var(--border);
+      display: grid; place-items: center; font-size: .85rem; font-weight: 800; color: var(--muted);
+      transition: all .18s ease;
+    }
+    .quiz-opt:hover:not(:disabled) { border-color: var(--primary); background: #fff; }
+    .quiz-opt:hover:not(:disabled) .opt-key { border-color: var(--primary); color: var(--primary); }
+    .quiz-opt:disabled { cursor: default; }
+    .quiz-opt.correct { background: #ecfdf5; border-color: #10b981; color: #047857; }
+    .quiz-opt.correct .opt-key { background: #10b981; border-color: #10b981; color: #fff; }
+    .quiz-opt.wrong { background: #fef2f2; border-color: #ef4444; color: #b91c1c; }
+    .quiz-opt.wrong .opt-key { background: #ef4444; border-color: #ef4444; color: #fff; }
+
+    .quiz-result { text-align: center; display: none; }
+    .quiz-result.active { display: block; animation: slideDown .3s ease; }
+    .score-ring {
+      position: relative; width: 124px; height: 124px; border-radius: 50%;
+      margin: .4rem auto 1.3rem; display: grid; place-items: center;
+      background: conic-gradient(var(--primary) calc(var(--pct, 0) * 1%), #e2e8f0 0);
+    }
+    .score-ring::before { content: ''; position: absolute; inset: 13px; background: #fff; border-radius: 50%; }
+    .score-inner { position: relative; line-height: 1.35; }
+    .score-inner strong { display: block; font-size: 1.55rem; font-weight: 800; color: var(--ink); }
+    .score-inner small { font-size: .78rem; font-weight: 700; color: var(--muted); }
+    .quiz-result h4 { font-size: 1.2rem; margin-bottom: .35rem; }
+    .quiz-result-actions { display: flex; justify-content: center; gap: .8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+    .modal-card.wide { width: min(680px, 100%); }
+
+    .subject-card { display: flex; flex-direction: column; }
+    .subject-card p { margin-bottom: 1.05rem; }
+    .subject-foot { margin-top: auto; display: flex; flex-direction: column; gap: .85rem; }
+    .subject-count { display: inline-flex; align-items: center; gap: .42rem; font-size: .85rem; font-weight: 700; color: var(--muted); }
+    .subject-count .ic { width: 1.05rem; height: 1.05rem; color: var(--primary); }
+    .subject-open {
+      width: 100%;
+      font-family: inherit; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+      background: var(--primary-soft); color: var(--primary);
+      border: none; font-weight: 800; font-size: .92rem;
+      padding: .68rem 1rem; border-radius: 11px; transition: all .22s ease;
+    }
+    .subject-open:hover { background: var(--primary); color: #fff; }
+    .subject-open .ic { width: 1rem; height: 1rem; }
+
+    .subject-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .subject-head .icon-box { width: 56px; height: 56px; border-radius: 16px; }
+    .subject-head h3 { font-size: 1.28rem; }
+    .subject-head p { font-size: .88rem; color: var(--muted); font-weight: 600; }
+
+    .subject-course { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; margin-bottom: 1.3rem; }
+    .subject-course:last-child { margin-bottom: 0; }
+    .sc-body { padding: 1.3rem; }
+    .sc-body h4 { font-size: 1.05rem; margin-bottom: .45rem; }
+    .sc-body > p { font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+    .sc-meta { display: flex; flex-wrap: wrap; gap: .5rem 1.3rem; font-size: .86rem; font-weight: 600; color: var(--text); margin-bottom: 1.1rem; }
+    .sc-meta span { display: inline-flex; align-items: center; gap: .38rem; }
+    .sc-meta .ic { width: 1.05rem; height: 1.05rem; color: var(--muted); }
+    .sc-lectures { list-style: none; border: 1px dashed var(--border); border-radius: 12px; padding: .5rem .95rem; margin-bottom: 1.15rem; }
+    .sc-lectures li { display: flex; align-items: center; gap: .7rem; padding: .55rem .1rem; font-size: .92rem; font-weight: 600; color: var(--text); }
+    .sc-lectures li + li { border-top: 1px dashed var(--border); }
+    .sc-lectures .ic { width: 1rem; height: 1rem; color: var(--muted); margin-inline-start: auto; }
+    .sc-num { width: 26px; height: 26px; border-radius: 8px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: .76rem; font-weight: 800; flex-shrink: 0; }
+    .sc-empty { text-align: center; color: var(--muted); font-weight: 600; padding: 2rem 0; }
+
+    .grid-empty {
+      grid-column: 1 / -1;
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      text-align: center; background: #fff;
+      border: 1.5px dashed var(--border); border-radius: 18px;
+      padding: 2.6rem 1.5rem;
+    }
+    .grid-empty .icon-box { margin-bottom: .7rem; }
+    .grid-empty h3 { font-size: 1.1rem; }
+    .grid-empty p { color: var(--muted); font-size: .93rem; font-weight: 600; max-width: 420px; }
+
+    /* ===== قسم المدرسين: أزرار الانضمام عند غياب المدرسين ===== */
+    .teachers-join { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; margin-top: .35rem; }
+
+    /* ===== نموذج بعمودين (حساب المدرس) ===== */
+    .form-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.05rem; }
+    .form-cols .full { grid-column: 1 / -1; }
+    @media (max-width: 560px) { .form-cols { grid-template-columns: 1fr; } }
+
+    /* ===== زر الخطر (حذف) ===== */
+    .btn-danger {
+      background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff;
+      border: none; box-shadow: 0 8px 20px rgba(220, 38, 38, .32);
+    }
+    .btn-danger:hover { box-shadow: 0 12px 26px rgba(220, 38, 38, .4); filter: brightness(1.05); }
+
+    /* ===== لوحة تحكم المدرس ===== */
+    .dash-stats.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .dash-panel > h3 .btn { margin-inline-start: auto; }
+    .dash-panel > h3 { flex-wrap: wrap; }
+
+    .tc-list { display: grid; gap: 1rem; }
+    .tc-card { border: 1.5px solid var(--border); border-radius: 16px; padding: 1.15rem 1.2rem; background: #fff; transition: border-color .2s; }
+    .tc-card:hover { border-color: #c7d2fe; }
+    .tc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .8rem; flex-wrap: wrap; }
+    .tc-badge { display: inline-flex; align-items: center; gap: .4rem; background: var(--primary-soft); color: var(--primary); font-size: .78rem; font-weight: 800; padding: .3rem .85rem; border-radius: 999px; }
+    .tc-badge .ic { width: .9rem; height: .9rem; }
+    .tc-date { font-size: .8rem; color: var(--muted); font-weight: 600; }
+    .tc-title { font-size: 1.05rem; margin: .6rem 0 .3rem; }
+    .tc-desc { font-size: .89rem; color: var(--muted); line-height: 1.7; }
+    .tc-actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .95rem; }
+    .tc-btn {
+      display: inline-flex; align-items: center; gap: .42rem;
+      font-family: inherit; font-size: .85rem; font-weight: 700; cursor: pointer;
+      background: var(--bg); border: 1.5px solid var(--border); color: var(--text);
+      padding: .5rem .95rem; border-radius: 10px; transition: all .2s ease;
+    }
+    .tc-btn .ic { width: .95rem; height: .95rem; }
+    .tc-btn:hover { border-color: #c7d2fe; color: var(--primary); background: var(--primary-soft); }
+    .tc-btn.danger:hover { border-color: #fecaca; color: #dc2626; background: #fef2f2; }
+    .tc-lectures { list-style: none; margin-top: .85rem; border: 1px dashed var(--border); border-radius: 12px; padding: .45rem .9rem; }
+    .tc-lectures li { display: flex; align-items: center; gap: .6rem; padding: .5rem .1rem; font-size: .89rem; font-weight: 600; color: var(--text); }
+    .tc-lectures li + li { border-top: 1px dashed var(--border); }
+    .tc-lec-title { flex: 1; min-width: 0; overflow-wrap: break-word; overflow: hidden; }
+    .tc-lec-del {
+      flex-shrink: 0; width: 30px; height: 30px; border: none; border-radius: 9px; cursor: pointer;
+      background: transparent; color: var(--muted); display: grid; place-items: center; transition: .2s;
+    }
+    .tc-lec-del:hover { background: #fee2e2; color: #dc2626; }
+    .tc-lec-del .ic { width: 1rem; height: 1rem; }
+    .lec-add { display: flex; gap: .55rem; margin-top: .7rem; }
+    .lec-add input {
+      flex: 1; min-width: 0; font-family: inherit; font-size: .9rem;
+      padding: .6rem .9rem; border: 1.5px solid var(--border); border-radius: 10px;
+      background: #f8fafc; color: var(--ink); transition: .2s;
+    }
+    .lec-add input:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(79, 70, 229, .13); }
+    .tc-empty-note { font-size: .85rem; color: var(--muted); font-weight: 600; margin-top: .6rem; }
+    .tc-meta-row { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .55rem; font-size: .83rem; font-weight: 700; color: var(--muted); }
+    .tc-meta-row span { display: inline-flex; align-items: center; gap: .35rem; }
+    .tc-meta-row .ic { width: .95rem; height: .95rem; }
+
+    /* ===== نافذة التأكيد قبل الحذف ===== */
+    .confirm-card { width: min(392px, 100%); text-align: center; }
+    .confirm-card .icon-box { margin: 0 auto .9rem; width: 56px; height: 56px; border-radius: 16px; }
+    .confirm-card h3 { font-size: 1.15rem; margin-bottom: .5rem; }
+    .confirm-card p { color: var(--muted); font-size: .92rem; font-weight: 600; line-height: 1.8; }
+    .confirm-actions { display: flex; gap: .7rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+    .confirm-actions .btn { flex: 1; min-width: 130px; justify-content: center; }
+
+    @media (max-width: 992px) {
+      .nav-toggle { display: flex; }
+      .nav-actions .btn-login { display: none; }
+      .nav-login { display: inline-flex; }
+      .nav-links {
+        display: none; position: absolute; top: calc(100% + 8px); right: 1rem; left: 1rem;
+        background: #fff; border: 1px solid var(--border); border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, .13);
+        flex-direction: column; align-items: stretch; gap: .15rem; padding: .9rem;
+      }
+      .nav-links.open { display: flex; animation: slideDown .25s ease; }
+      .nav-links a { padding: .8rem 1.05rem; border-radius: 10px; }
+      .nav-links a::after { display: none; }
+      .nav-links a:hover { background: var(--primary-soft); color: var(--primary); }
+      .nav-links .nav-login { margin-top: .6rem; width: 100%; }
+      .hero-wrap { grid-template-columns: 1fr; }
+      .hero-visual { max-width: 470px; margin: 2.4rem auto 0; min-height: 360px; }
+      .stats { grid-template-columns: repeat(2, 1fr); gap: 1.2rem 0; }
+      .stat + .stat { border-inline-start: none; }
+      .support-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding-top: 3.2rem; }
+      .hero-actions .btn { flex: 1; }
+      .mock-video { height: 140px; }
+      .mock-play { width: 50px; height: 50px; }
+      .float-pill { padding: .55rem .8rem; }
+      .float-pill strong { font-size: .85rem; }
+      .pill-1 { inset-inline-start: 0; }
+      .pill-2 { inset-inline-end: 0; }
+      .courses-head { flex-direction: column; align-items: flex-start; }
+      .cta { padding: 3rem 1.4rem; }
+      .support-card { padding: 1.6rem 1.3rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.1rem; }
+      .footer-bottom { justify-content: center; text-align: center; }
+      .modal-card { padding: 1.7rem 1.3rem; }
+      .teacher-bio { min-height: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6.5h8"/><path d="M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18.5h8"/></symbol>
+  <symbol id="i-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><ellipse cx="12" cy="12" rx="10" ry="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 2h6"/><path d="M10 2v6.3L4.7 18.4a2.4 2.4 0 0 0 2.1 3.6h10.4a2.4 2.4 0 0 0 2.1-3.6L14 8.3V2"/><path d="M7.5 15.5h9"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M12 20c0-5 4-9 9-9-.5 5-3.5 9-9 9z"/><path d="M12 20c0-4-3-7-7-7 .5 4 2.5 7 7 7z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/></symbol>
+  <symbol id="i-grad" viewBox="0 0 24 24"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-twitter" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="m23 7-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="m1 1 22 22"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M2 22h20"/><path d="M5 22V10M9.5 22V10M14.5 22V10M19 22V10"/><path d="m12 2 8 7H4z"/></symbol>
+  <symbol id="i-lightbulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-trending" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+</svg>
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#home" class="logo" aria-label="الشعيب">
+      <span class="logo-badge"><svg class="ic"><use href="#i-grad"/></svg></span>
+      <span class="logo-text">
+        <strong>الشعيب</strong>
+        <small>ALSHUAIB</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="التنقل الرئيسي">
+      <a href="#home">الرئيسية</a>
+      <a href="#subjects">المواد الدراسية</a>
+      <a href="#courses">الكورسات</a>
+      <a href="#lectures">المحاضرات</a>
+      <a href="#teachers">المدرسون</a>
+      <a href="#tests">الاختبارات</a>
+      <a href="#support">تواصل معنا</a>
+      <button class="btn btn-primary btn-sm nav-login auth-nav-btn" data-open-modal data-auth-tab="login">
+        <svg class="ic"><use href="#i-user"/></svg>
+        <span class="auth-nav-label">تسجيل الدخول</span>
+      </button>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-primary btn-sm btn-login auth-nav-btn" data-open-modal data-auth-tab="login">
+        <svg class="ic"><use href="#i-user"/></svg>
+        <span class="auth-nav-label">تسجيل الدخول</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="deco d1"></div>
+    <div class="deco d2"></div>
+    <div class="container">
+      <div class="hero-wrap">
+        <div class="hero-content">
+          <div class="hero-brand">
+            <span class="logo-badge"><svg class="ic"><use href="#i-grad"/></svg></span>
+            <span class="logo-text">
+              <strong>الشعيب</strong>
+              <small>ALSHUAIB</small>
+            </span>
+          </div>
+          <span class="hero-badge">
+            <svg class="ic fill"><use href="#i-star"/></svg>
+            منصة تعليمية عربية حديثة
+          </span>
+          <h1>مستقبلك التعليمي <span class="hl">يبدأ من هنا</span></h1>
+          <p class="lead">
+            الشعيب منصة تعليمية عربية متكاملة تجمع لك المواد الدراسية والكورسات في مكان واحد،
+            مع تجربة تعلم حديثة ومتابعة مستمرة لرحلتك التعليمية.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-open-modal data-auth-tab="signup">
+              ابدأ الآن
+              <svg class="ic"><use href="#i-chevron"/></svg>
+            </button>
+            <button class="btn btn-ghost" data-open-modal data-auth-tab="login">
+              <svg class="ic"><use href="#i-user"/></svg>
+              تسجيل الدخول
+            </button>
+          </div>
+          <div class="trust">
+            <div class="avatars">
+              <span class="avatar a1"><svg class="ic"><use href="#i-user"/></svg></span>
+              <span class="avatar a2"><svg class="ic"><use href="#i-user"/></svg></span>
+              <span class="avatar a3"><svg class="ic"><use href="#i-grad"/></svg></span>
+              <span class="avatar a5"><svg class="ic"><use href="#i-book"/></svg></span>
+            </div>
+            منصة جديدة — كن أول من ينضم إلى مجتمع الشعيب التعليمي
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="blob"></div>
+          <div class="mock-card">
+            <div class="mock-head"><span></span><span></span><span></span></div>
+            <div class="mock-video">
+              <div class="mock-play"><svg class="ic fill"><use href="#i-play"/></svg></div>
+            </div>
+            <div class="mock-info">
+              <h3>منصتك التعليمية المتكاملة</h3>
+              <div class="bar-label"><span>جاهزون لانطلاق رحلتك التعليمية</span></div>
+              <div class="bar"><span></span></div>
+            </div>
+          </div>
+          <div class="float-pill pill-1">
+            <svg class="ic fill"><use href="#i-star"/></svg>
+            <div><strong>دروس تفاعلية</strong><small>بأسلوب حديث وممتع</small></div>
+          </div>
+          <div class="float-pill pill-2">
+            <svg class="ic"><use href="#i-award"/></svg>
+            <div><strong>متابعة تقدمك</strong><small>من لوحة الطالب</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num" id="statStudents" data-target="0">0</div>
+          <div class="stat-label">طالب مسجل</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="statCourses" data-target="0">0</div>
+          <div class="stat-label">كورس تعليمي</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="statTeachers" data-target="0">0</div>
+          <div class="stat-label">مدرس خبير</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="statSubjects" data-target="0">0</div>
+          <div class="stat-label">مادة دراسية</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="subjects">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">المواد الدراسية</span>
+        <h2>اختر مادتك وابدأ رحلة التعلم</h2>
+        <p class="sub">نغطي جميع المواد الأساسية للمراحل الابتدائية والثانوية والجامعية بمحتوى محدّث باستمرار.</p>
+      </div>
+
+      <div class="subjects-grid" id="subjectsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="courses" style="padding-top:1rem">
+    <div class="container">
+      <div class="courses-head">
+        <div class="section-head">
+          <span class="kicker">الكورسات</span>
+          <h2>كورسات الشعيب</h2>
+          <p class="sub" id="coursesSub">ستظهر هنا الكورسات فور إضافتها — تابعنا لتكون أول من يعلم عند انطلاقها.</p>
+        </div>
+        <a href="#courses" id="viewAllCourses" class="view-all">
+          عرض جميع الكورسات
+          <svg class="ic"><use href="#i-chevron"/></svg>
+        </a>
+      </div>
+
+      <div class="courses-grid" id="coursesGrid">
+        <div class="grid-empty">
+          <span class="icon-box s1"><svg class="ic"><use href="#i-book"/></svg></span>
+          <h3>لا توجد كورسات متاحة حالياً</h3>
+          <p>المنصة جديدة — سيتم إضافة الكورسات وفتح التسجيل قريباً.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="lectures" style="padding-top:1rem">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">المحاضرات</span>
+        <h2>محاضرات مباشرة ومسجلة</h2>
+        <p class="sub">تابع محاضراتك المباشرة أولاً بأول، أو شاهد التسجيلات في الوقت الذي يناسبك.</p>
+      </div>
+
+      <div class="pill-filter">
+        <button class="filter-btn active" data-lecture-tab="upcoming" type="button" aria-pressed="true">
+          <svg class="ic"><use href="#i-video"/></svg>
+          مباشرة وقادمة
+        </button>
+        <button class="filter-btn" data-lecture-tab="recorded" type="button" aria-pressed="false">
+          <svg class="ic"><use href="#i-play"/></svg>
+          محاضرات مسجلة
+        </button>
+      </div>
+
+      <div class="lectures-grid" id="lecturesUpcoming">
+        <div class="grid-empty">
+          <span class="icon-box s2"><svg class="ic"><use href="#i-video"/></svg></span>
+          <h3>لا توجد محاضرات مباشرة أو قادمة حالياً</h3>
+          <p>سيتم الإعلان عن جدول المحاضرات القادمة قريباً.</p>
+        </div>
+      </div>
+
+      <div class="lectures-grid" id="lecturesRecorded" hidden>
+        <div class="grid-empty">
+          <span class="icon-box s1"><svg class="ic"><use href="#i-play"/></svg></span>
+          <h3>لا توجد محاضرات مسجلة حالياً</h3>
+          <p>ستظهر تسجيلات المحاضرات هنا فور إضافتها.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="teachers">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">فريقنا التعليمي</span>
+        <h2>فريق التدريس في الشعيب</h2>
+        <p class="sub" id="teachersSub">فريق التدريس سيظهر هنا فور انضمامه — نضع جودة المحتوى في المقام الأول.</p>
+      </div>
+
+      <div class="teachers-grid" id="teachersGrid">
+        <div class="grid-empty">
+          <span class="icon-box s3"><svg class="ic"><use href="#i-users"/></svg></span>
+          <h3>لا يوجد مدرسون مضافون بعد</h3>
+          <p>سيظهر هنا فريق التدريس فور انضمامه إلى المنصة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tests" style="padding-top:1rem">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">الاختبارات</span>
+        <h2>اختبر مستواك وقيّم تقدمك</h2>
+        <p class="sub">اختبارات قصيرة وتفاعلية بنتائج فورية تساعدك على قياس فهمك وتحديد نقاط قوتك.</p>
+      </div>
+
+      <div class="tests-grid">
+        <div class="grid-empty">
+          <span class="icon-box s6"><svg class="ic"><use href="#i-check-circle"/></svg></span>
+          <h3>لا توجد اختبارات متاحة حالياً</h3>
+          <p>ستظهر الاختبارات التفاعلية هنا مع إضافة الكورسات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="why" style="padding-top:1rem">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">مميزاتنا</span>
+        <h2>لماذا الشعيب؟</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="icon-box s1"><svg class="ic"><use href="#i-list"/></svg></div>
+          <div>
+            <h3>تعلم منظم</h3>
+            <p>محتوى مرتب حسب المواد والكورسات والمحاضرات، لتتعلم بخطوات واضحة دون تشتيت.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="icon-box s3"><svg class="ic"><use href="#i-eye"/></svg></div>
+          <div>
+            <h3>متابعة تقدم الطالب</h3>
+            <p>لوحة طالب خاصة تعرض كورساتك وتقدمك أولاً بأول من أي جهاز وفي أي وقت.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="icon-box s2"><svg class="ic"><use href="#i-check-circle"/></svg></div>
+          <div>
+            <h3>اختبارات ونتائج</h3>
+            <p>اختبارات تفاعلية مع نتائج فورية تساعدك على قياس مستواك بعد كل درس.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="icon-box s5"><svg class="ic"><use href="#i-clock"/></svg></div>
+          <div>
+            <h3>تجربة سهلة وسريعة</h3>
+            <p>واجهة عربية بسيطة وسريعة تعمل بسلاسة على الهاتف والتابلت والكمبيوتر.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2>هل أنت مستعد للبدء؟</h2>
+        <p>أنشئ حسابك مجاناً في أقل من دقيقة، وابدأ رحلتك التعليمية مع الشعيب اليوم.</p>
+        <button class="btn btn-white" data-open-modal data-auth-tab="signup">
+          <svg class="ic"><use href="#i-grad"/></svg>
+          أنشئ حسابك مجاناً
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="support">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">تواصل معنا</span>
+        <h2>نحن هنا من أجلك</h2>
+        <p class="sub">تابعنا على وسائل التواصل الاجتماعي أو تواصل مع فريق الدعم مباشرة في أي وقت.</p>
+      </div>
+      <div class="support-grid">
+        <div class="support-card">
+          <h3>تابعنا على</h3>
+          <p>كل جديد عن الكورسات والمحاضرات ينشر أولاً على صفحاتنا.</p>
+          <div class="social-row">
+            <a href="#" class="social-btn sb-fb" aria-label="فيسبوك">
+              <svg class="ic"><use href="#i-facebook"/></svg>
+              <span>فيسبوك</span>
+            </a>
+            <a href="#" class="social-btn sb-ig" aria-label="إنستغرام">
+              <svg class="ic"><use href="#i-instagram"/></svg>
+              <span>إنستغرام</span>
+            </a>
+          </div>
+        </div>
+        <div class="support-card">
+          <h3>الدعم الفني</h3>
+          <p>فريقنا جاهز لمساعدتك عبر الواتساب أو الخط الساخن.</p>
+          <ul class="support-list">
+            <li>
+              <span class="icon-box s5"><svg class="ic"><use href="#i-chat"/></svg></span>
+              <div>
+                <strong>الدعم الفني (واتساب)</strong>
+                <a href="https://wa.me/201060163505" target="_blank" rel="noopener">01060163505</a>
+              </div>
+            </li>
+            <li>
+              <span class="icon-box s1"><svg class="ic"><use href="#i-phone"/></svg></span>
+              <div>
+                <strong>الخط الساخن</strong>
+                <a href="tel:+201060163505">01060163505</a>
+              </div>
+            </li>
+            <li>
+              <span class="icon-box s3"><svg class="ic"><use href="#i-pin"/></svg></span>
+              <div>
+                <strong>الدولة</strong>
+                <span>مصر</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="logo">
+          <span class="logo-badge"><svg class="ic"><use href="#i-grad"/></svg></span>
+          <span class="logo-text">
+            <strong>الشعيب</strong>
+            <small>ALSHUAIB</small>
+          </span>
+        </a>
+        <p class="footer-about">منصة تعليمية عربية حديثة تسهّل عليك تعلّم المواد الدراسية ومتابعة تقدمك خطوة بخطوة.</p>
+        <div class="social">
+          <a href="#" aria-label="فيسبوك"><svg class="ic"><use href="#i-facebook"/></svg></a>
+          <a href="#" aria-label="تويتر"><svg class="ic"><use href="#i-twitter"/></svg></a>
+          <a href="#" aria-label="يوتيوب"><svg class="ic"><use href="#i-youtube"/></svg></a>
+          <a href="#" aria-label="إنستغرام"><svg class="ic"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>روابط سريعة</h4>
+        <a href="#home">الرئيسية</a>
+        <a href="#subjects">المواد الدراسية</a>
+        <a href="#courses">الكورسات</a>
+        <a href="#lectures">المحاضرات</a>
+        <a href="#teachers">المدرسون</a>
+        <a href="#tests">الاختبارات</a>
+        <a href="#teachers" data-open-teacher data-teacher-tab="tlogin">بوابة المدرسين</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>المواد</h4>
+        <a href="#subjects">اللغة العربية</a>
+        <a href="#subjects">اللغة الإنجليزية</a>
+        <a href="#subjects">الرياضيات</a>
+        <a href="#subjects">الكيمياء</a>
+        <a href="#subjects">التاريخ</a>
+        <a href="#subjects">الفلسفة</a>
+      </div>
+
+      <div>
+        <h4>تواصل معنا</h4>
+        <ul class="footer-contact">
+          <li><svg class="ic"><use href="#i-mail"/></svg> info@alshuaib.com</li>
+          <li><svg class="ic"><use href="#i-chat"/></svg> <a href="https://wa.me/201060163505" target="_blank" rel="noopener">الدعم الفني (واتساب): 01060163505</a></li>
+          <li><svg class="ic"><use href="#i-phone"/></svg> <a href="tel:+201060163505">الخط الساخن: 01060163505</a></li>
+          <li><svg class="ic"><use href="#i-pin"/></svg> مصر</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 الشعيب ALSHUAIB — جميع الحقوق محفوظة</span>
+      <span>صُنع بشغف من أجل التعليم العربي</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="authModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="modal-close" data-close-modal aria-label="إغلاق">
+      <svg class="ic"><use href="#i-x"/></svg>
+    </button>
+
+    <div class="modal-head">
+      <span class="logo-badge"><svg class="ic"><use href="#i-grad"/></svg></span>
+      <h3 id="authTitle">مرحباً بعودتك</h3>
+      <p id="authSub">سجّل دخولك لمتابعة رحلة التعلم</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="tab active" data-tab="login" type="button">تسجيل الدخول</button>
+      <button class="tab" data-tab="signup" type="button">حساب جديد</button>
+    </div>
+
+    <form class="auth-form active" id="formLogin" novalidate>
+      <label>
+        البريد الإلكتروني
+        <span class="input-wrap">
+          <input type="email" name="email" placeholder="example@alshuaib.com" required>
+          <svg class="ic"><use href="#i-mail"/></svg>
+        </span>
+      </label>
+      <label>
+        كلمة المرور
+        <span class="input-wrap">
+          <input type="password" name="password" placeholder="••••••••" required>
+          <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+            <svg class="ic"><use href="#i-eye"/></svg>
+          </button>
+        </span>
+      </label>
+      <div class="form-row">
+        <label class="check"><input type="checkbox" name="remember" checked> تذكرني</label>
+        <a href="#support" class="link" data-close-modal>نسيت كلمة المرور؟</a>
+      </div>
+      <div class="form-error" id="loginError" role="alert" hidden></div>
+      <button type="submit" class="btn btn-primary btn-block">تسجيل الدخول</button>
+    </form>
+
+    <form class="auth-form" id="formSignup" novalidate>
+      <label>
+        الاسم الكامل
+        <input type="text" name="fullname" placeholder="محمد أحمد" required minlength="2">
+      </label>
+      <label>
+        البريد الإلكتروني
+        <span class="input-wrap">
+          <input type="email" name="email" placeholder="example@alshuaib.com" required>
+          <svg class="ic"><use href="#i-mail"/></svg>
+        </span>
+      </label>
+      <label>
+        كلمة المرور
+        <span class="input-wrap">
+          <input type="password" name="password" placeholder="6 أحرف على الأقل" required minlength="6">
+          <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+            <svg class="ic"><use href="#i-eye"/></svg>
+          </button>
+        </span>
+      </label>
+      <label>
+        تأكيد كلمة المرور
+        <span class="input-wrap">
+          <input type="password" name="confirm" placeholder="أعد كتابة كلمة المرور" required minlength="6">
+          <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+            <svg class="ic"><use href="#i-eye"/></svg>
+          </button>
+        </span>
+      </label>
+      <div class="form-error" id="signupError" role="alert" hidden></div>
+      <button type="submit" class="btn btn-primary btn-block">إنشاء الحساب</button>
+      <p class="fine">بإنشائك حساباً فأنت توافق على <a href="terms.html" target="_blank" rel="noopener" class="link">الشروط والأحكام</a> و<a href="privacy.html" target="_blank" rel="noopener" class="link">سياسة الخصوصية</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="dashboard" id="studentDash" aria-hidden="true">
+  <div class="dash-top">
+    <div class="container dash-top-inner">
+      <div class="dash-brand">
+        <span class="logo-badge"><svg class="ic"><use href="#i-grad"/></svg></span>
+        <strong>لوحة الطالب</strong>
+      </div>
+      <div class="dash-actions">
+        <button class="btn btn-ghost btn-sm" id="dashBack" type="button">
+          <svg class="ic"><use href="#i-chevron"/></svg>
+          العودة للمنصة
+        </button>
+        <button class="btn btn-primary btn-sm" id="dashLogout" type="button">
+          <svg class="ic"><use href="#i-x"/></svg>
+          تسجيل الخروج
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container dash-body">
+    <section class="dash-hero">
+      <div class="dash-hero-inner">
+        <span class="avatar xl a1" id="dashAvatar">—</span>
+        <div class="dash-hero-info">
+          <h2>مرحباً <span id="dashName">طالبنا العزيز</span></h2>
+          <p class="dash-hero-mail"><svg class="ic"><use href="#i-mail"/></svg><span id="dashHeroEmail">—</span></p>
+          <span class="dash-status"><span class="dot"></span>الحساب نشط</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="dash-stats">
+      <div class="dash-stat"><strong id="dashStatCourses">0</strong><span>كورس التحقت به</span></div>
+      <div class="dash-stat"><strong id="dashStatLectures">0</strong><span>محاضرة متاحة</span></div>
+      <div class="dash-stat"><strong id="dashStatTests">0</strong><span>اختبار</span></div>
+      <div class="dash-stat"><strong id="dashStatSubjects">0</strong><span>مادة التحقت بها</span></div>
+    </div>
+
+    <div class="dash-tabs" role="tablist" aria-label="أقسام لوحة الطالب">
+      <button class="dash-tab active" type="button" role="tab" aria-selected="true" data-dash-tab="profile">
+        <svg class="ic"><use href="#i-user"/></svg>
+        ملفي الشخصي
+      </button>
+      <button class="dash-tab" type="button" role="tab" aria-selected="false" data-dash-tab="courses">
+        <svg class="ic"><use href="#i-book"/></svg>
+        موادي
+      </button>
+      <button class="dash-tab" type="button" role="tab" aria-selected="false" data-dash-tab="tests">
+        <svg class="ic"><use href="#i-check-circle"/></svg>
+        اختباراتي
+      </button>
+      <button class="dash-tab" type="button" role="tab" aria-selected="false" data-dash-tab="progress">
+        <svg class="ic"><use href="#i-trending"/></svg>
+        تقدمي
+      </button>
+      <button class="dash-tab" type="button" role="tab" aria-selected="false" data-dash-tab="notifs">
+        <svg class="ic"><use href="#i-bell"/></svg>
+        الإشعارات
+      </button>
+    </div>
+
+    <section class="dash-pane active" data-dash-pane="profile" role="tabpanel">
+      <div class="dash-grid">
+        <div class="dash-panel">
+          <h3><svg class="ic"><use href="#i-edit"/></svg> تعديل البيانات</h3>
+          <form class="dash-form active" id="formProfile" novalidate>
+            <div class="avatar-edit">
+              <span class="avatar xl a2" id="profAvatar">—</span>
+              <div class="avatar-edit-col">
+                <div class="avatar-edit-actions">
+                  <button class="btn btn-ghost btn-sm" id="profAvatarBtn" type="button">
+                    <svg class="ic"><use href="#i-camera"/></svg>
+                    تغيير الصورة
+                  </button>
+                  <button class="btn btn-ghost btn-sm" id="profAvatarRemove" type="button" hidden>
+                    <svg class="ic"><use href="#i-x"/></svg>
+                    إزالة الصورة
+                  </button>
+                </div>
+                <p class="field-note">JPG أو PNG — تُضغط الصورة تلقائياً قبل الحفظ.</p>
+              </div>
+              <input type="file" id="profAvatarInput" accept="image/*" hidden>
+            </div>
+            <label>
+              الاسم الكامل
+              <input type="text" id="profName" autocomplete="name" placeholder="اكتب اسمك الكامل" required minlength="2">
+            </label>
+            <label>
+              البريد الإلكتروني
+              <input type="email" id="profEmail" disabled>
+            </label>
+            <p class="field-note">البريد الإلكتروني هو معرّف حسابك ولا يمكن تغييره حالياً.</p>
+            <div class="form-error" id="profileError" role="alert" hidden></div>
+            <div class="form-success" id="profileSuccess" role="status" hidden></div>
+            <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+          </form>
+        </div>
+
+        <div class="dash-panel">
+          <h3><svg class="ic"><use href="#i-user"/></svg> بيانات الحساب</h3>
+          <ul class="account-info">
+            <li><span>الاسم الكامل</span><strong id="dashAccName">—</strong></li>
+            <li><span>البريد الإلكتروني</span><strong id="dashAccEmail">—</strong></li>
+            <li><span>تاريخ إنشاء الحساب</span><strong id="dashAccDate">—</strong></li>
+            <li><span>حالة الحساب</span><strong class="acc-status"><span class="dot"></span>نشط</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dash-panel security-panel">
+        <h3><svg class="ic"><use href="#i-lock"/></svg> الأمان: تغيير كلمة المرور</h3>
+        <form class="dash-form active" id="formPwChange" novalidate>
+          <label>
+            كلمة المرور الحالية
+            <span class="input-wrap">
+              <input type="password" id="pwCurrent" autocomplete="current-password" placeholder="••••••••" required>
+              <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+                <svg class="ic"><use href="#i-eye"/></svg>
+              </button>
+            </span>
+          </label>
+          <div class="form-cols">
+            <label>
+              كلمة المرور الجديدة
+              <span class="input-wrap">
+                <input type="password" id="pwNew" autocomplete="new-password" placeholder="6 أحرف على الأقل" required minlength="6">
+                <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+                  <svg class="ic"><use href="#i-eye"/></svg>
+                </button>
+              </span>
+            </label>
+            <label>
+              تأكيد كلمة المرور الجديدة
+              <span class="input-wrap">
+                <input type="password" id="pwConfirm" autocomplete="new-password" placeholder="أعد كتابة الكلمة الجديدة" required minlength="6">
+                <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+                  <svg class="ic"><use href="#i-eye"/></svg>
+                </button>
+              </span>
+            </label>
+          </div>
+          <div class="form-error" id="pwError" role="alert" hidden></div>
+          <div class="form-success" id="pwSuccess" role="status" hidden></div>
+          <button type="submit" class="btn btn-primary">تغيير كلمة المرور</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="dash-pane" data-dash-pane="courses" role="tabpanel">
+      <div class="dash-panel">
+        <h3><svg class="ic"><use href="#i-book"/></svg> موادي</h3>
+        <div id="dashCoursesWrap"></div>
+      </div>
+    </section>
+
+    <section class="dash-pane" data-dash-pane="tests" role="tabpanel">
+      <div class="dash-panel">
+        <h3><svg class="ic"><use href="#i-check-circle"/></svg> اختباراتي</h3>
+        <div class="grid-empty">
+          <span class="icon-box s2"><svg class="ic"><use href="#i-check-circle"/></svg></span>
+          <h3>لا توجد اختبارات بعد</h3>
+          <p>عند إتاحة اختبارات في كورساتك ستظهر هنا مع نتائجك فور إتمامها.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="dash-pane" data-dash-pane="progress" role="tabpanel">
+      <div class="dash-panel">
+        <h3><svg class="ic"><use href="#i-trending"/></svg> تقدمي</h3>
+        <div id="dashProgWrap"></div>
+      </div>
+    </section>
+
+    <section class="dash-pane" data-dash-pane="notifs" role="tabpanel">
+      <div class="dash-panel">
+        <h3><svg class="ic"><use href="#i-bell"/></svg> الإشعارات</h3>
+        <div class="grid-empty">
+          <span class="icon-box s3"><svg class="ic"><use href="#i-bell"/></svg></span>
+          <h3>لا توجد إشعارات حالياً</h3>
+          <p>ستظهر هنا إشعارات المنصة المهمة وتحديثات كورساتك.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal-overlay" id="quizModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+    <button class="modal-close" data-close-quiz aria-label="إغلاق">
+      <svg class="ic"><use href="#i-x"/></svg>
+    </button>
+
+    <div class="modal-head">
+      <span class="logo-badge"><svg class="ic"><use href="#i-list"/></svg></span>
+      <h3 id="quizTitle">اختبار</h3>
+      <p id="quizSub"></p>
+    </div>
+
+    <div id="quizBody">
+      <div class="quiz-progress"><span id="quizBar"></span></div>
+      <div class="quiz-count" id="quizCount"></div>
+      <h4 class="quiz-q" id="quizQ"></h4>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="score-ring" id="scoreRing">
+        <div class="score-inner">
+          <strong id="scoreNum">0%</strong>
+          <small>النتيجة</small>
+        </div>
+      </div>
+      <h4 id="quizMsg"></h4>
+      <p class="fine" id="quizDetail"></p>
+      <div class="quiz-result-actions">
+        <button class="btn btn-ghost btn-sm" id="quizRestart" type="button">إعادة الاختبار</button>
+        <button class="btn btn-primary btn-sm" data-close-quiz type="button">إنهاء</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="subjectModal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="subjectTitle">
+    <button class="modal-close" data-close-subject aria-label="إغلاق">
+      <svg class="ic"><use href="#i-x"/></svg>
+    </button>
+    <div class="subject-head">
+      <span class="icon-box" id="subjectIcon"></span>
+      <div>
+        <h3 id="subjectTitle"></h3>
+        <p id="subjectSub"></p>
+      </div>
+    </div>
+    <div id="subjectCourses"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="teacherModal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="teacherAuthTitle">
+    <button class="modal-close" data-close-teacher aria-label="إغلاق">
+      <svg class="ic"><use href="#i-x"/></svg>
+    </button>
+
+    <div class="modal-head">
+      <span class="logo-badge"><svg class="ic"><use href="#i-grad"/></svg></span>
+      <h3 id="teacherAuthTitle">بوابة المدرسين</h3>
+      <p id="teacherAuthSub">سجّل دخولك للوصول إلى لوحة تحكم المدرس</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="tab active" data-tab="tlogin" type="button">تسجيل الدخول</button>
+      <button class="tab" data-tab="tsignup" type="button">حساب مدرس جديد</button>
+    </div>
+
+    <form class="auth-form active" id="formTeacherLogin" novalidate>
+      <label>
+        البريد الإلكتروني
+        <span class="input-wrap">
+          <input type="email" name="email" placeholder="example@alshuaib.com" required>
+          <svg class="ic"><use href="#i-mail"/></svg>
+        </span>
+      </label>
+      <label>
+        كلمة المرور
+        <span class="input-wrap">
+          <input type="password" name="password" placeholder="••••••••" required>
+          <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+            <svg class="ic"><use href="#i-eye"/></svg>
+          </button>
+        </span>
+      </label>
+      <div class="form-row">
+        <label class="check"><input type="checkbox" name="remember" checked> تذكرني</label>
+        <a href="#support" class="link" data-close-teacher>نسيت كلمة المرور؟</a>
+      </div>
+      <div class="form-error" id="teacherLoginError" role="alert" hidden></div>
+      <button type="submit" class="btn btn-primary btn-block">دخول لوحة المدرس</button>
+    </form>
+
+    <form class="auth-form" id="formTeacherSignup" novalidate>
+      <div class="form-cols">
+        <label>
+          الاسم الكامل
+          <input type="text" name="fullname" placeholder="مثال: أحمد محمود" required minlength="2">
+        </label>
+        <label>
+          البريد الإلكتروني
+          <span class="input-wrap">
+            <input type="email" name="email" placeholder="example@alshuaib.com" required>
+            <svg class="ic"><use href="#i-mail"/></svg>
+          </span>
+        </label>
+        <label>
+          كلمة المرور
+          <span class="input-wrap">
+            <input type="password" name="password" placeholder="6 أحرف على الأقل" required minlength="6">
+            <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+              <svg class="ic"><use href="#i-eye"/></svg>
+            </button>
+          </span>
+        </label>
+        <label>
+          تأكيد كلمة المرور
+          <span class="input-wrap">
+            <input type="password" name="confirm" placeholder="أعد كتابة كلمة المرور" required minlength="6">
+            <button type="button" class="pw-toggle" data-pw-toggle aria-label="إظهار كلمة المرور" aria-pressed="false">
+              <svg class="ic"><use href="#i-eye"/></svg>
+            </button>
+          </span>
+        </label>
+        <label>
+          المادة التي تدرّسها
+          <select name="subject" required id="teacherSubjectSelect">
+            <option value="" selected disabled>اختر المادة</option>
+          </select>
+        </label>
+        <label>
+          رقم الهاتف
+          <span class="input-wrap">
+            <input type="tel" name="phone" placeholder="01XXXXXXXXX" required>
+            <svg class="ic"><use href="#i-phone"/></svg>
+          </span>
+        </label>
+        <label class="full">
+          نبذة قصيرة عنك
+          <textarea name="bio" placeholder="اكتب نبذة مختصرة عن خبرتك التعليمية (تظهر للطلاب في قسم المدرسين)" required minlength="10" maxlength="300"></textarea>
+        </label>
+      </div>
+      <div class="form-error" id="teacherSignupError" role="alert" hidden></div>
+      <button type="submit" class="btn btn-primary btn-block">إنشاء حساب المدرس</button>
+      <p class="fine">بإنشائك حساباً فأنت توافق على <a href="terms.html" target="_blank" rel="noopener" class="link">الشروط والأحكام</a> و<a href="privacy.html" target="_blank" rel="noopener" class="link">سياسة الخصوصية</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="dashboard" id="teacherDash" aria-hidden="true">
+  <div class="dash-top">
+    <div class="container dash-top-inner">
+      <div class="dash-brand">
+        <span class="logo-badge"><svg class="ic"><use href="#i-users"/></svg></span>
+        <strong>لوحة المدرس</strong>
+      </div>
+      <div class="dash-actions">
+        <button class="btn btn-ghost btn-sm" id="tdashBack" type="button">
+          <svg class="ic"><use href="#i-chevron"/></svg>
+          العودة للمنصة
+        </button>
+        <button class="btn btn-primary btn-sm" id="tdashLogout" type="button">
+          <svg class="ic"><use href="#i-x"/></svg>
+          تسجيل الخروج
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="dash-hero">
+      <h2>مرحباً <span id="tdashName">أستاذنا العزيز</span></h2>
+      <p id="tdashMeta">هذه لوحة التحكم الخاصة بك — أنشئ كورساتك وأدر محاضراتك من مكان واحد.</p>
+    </section>
+
+    <div class="dash-stats cols-3">
+      <div class="dash-stat"><strong id="tdashStatCourses">0</strong><span>كورس أنشأته</span></div>
+      <div class="dash-stat"><strong id="tdashStatStudents">0</strong><span>طالب ملتحق بكورساتك</span></div>
+      <div class="dash-stat"><strong id="tdashStatLectures">0</strong><span>محاضرة</span></div>
+    </div>
+
+    <div class="dash-grid">
+      <section class="dash-panel">
+        <h3>
+          <svg class="ic"><use href="#i-book"/></svg> كورساتي
+          <button class="btn btn-primary btn-sm" id="tdashNewCourse" type="button">
+            <svg class="ic"><use href="#i-plus"/></svg>
+            كورس جديد
+          </button>
+        </h3>
+        <div id="tdashCourses"></div>
+      </section>
+
+      <section class="dash-panel">
+        <h3><svg class="ic"><use href="#i-user"/></svg> بيانات الحساب</h3>
+        <ul class="account-info">
+          <li><span>الاسم الكامل</span><strong id="tdashAccName">—</strong></li>
+          <li><span>البريد الإلكتروني</span><strong id="tdashAccEmail">—</strong></li>
+          <li><span>المادة</span><strong id="tdashAccSubject">—</strong></li>
+          <li><span>رقم الهاتف</span><strong id="tdashAccPhone">—</strong></li>
+          <li><span>تاريخ الانضمام</span><strong id="tdashAccDate">—</strong></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="courseModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
+    <button class="modal-close" data-close-course aria-label="إغلاق">
+      <svg class="ic"><use href="#i-x"/></svg>
+    </button>
+
+    <div class="modal-head">
+      <span class="logo-badge"><svg class="ic"><use href="#i-book"/></svg></span>
+      <h3 id="courseModalTitle">كورس جديد</h3>
+      <p id="courseModalSub">أضف كورساً جديداً إلى قائمتك التعليمية</p>
+    </div>
+
+    <form class="auth-form active" id="formCourse" novalidate>
+      <label>
+        عنوان الكورس
+        <input type="text" name="title" placeholder="مثال: أساسيات الجبر للمرحلة الثانوية" required minlength="3" maxlength="80">
+      </label>
+      <label>
+        وصف الكورس
+        <textarea name="desc" placeholder="وصف مختصر لما سيتعلمه الطالب في هذا الكورس" required minlength="10" maxlength="400"></textarea>
+      </label>
+      <div class="form-error" id="courseError" role="alert" hidden></div>
+      <button type="submit" class="btn btn-primary btn-block" id="courseSubmit">إنشاء الكورس</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="confirmModal" aria-hidden="true">
+  <div class="modal-card confirm-card" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <span class="icon-box s4"><svg class="ic"><use href="#i-alert"/></svg></span>
+    <h3 id="confirmTitle">تأكيد الحذف</h3>
+    <p id="confirmMsg"></p>
+    <div class="confirm-actions">
+      <button class="btn btn-ghost" id="confirmCancel" type="button">إلغاء</button>
+      <button class="btn btn-danger" id="confirmOk" type="button">نعم، احذف</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status">
+  <svg class="ic fill"><use href="#i-check"/></svg>
+  <span></span>
+</div>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const modal = document.getElementById('authModal');
+  const dashboard = document.getElementById('studentDash');
+  const openModal = () => {
+    if (currentStudent) { openDashboard(); return; }
+    modal.classList.add('active'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+  };
+  const closeModal = () => { if (modal.contains(document.activeElement)) document.activeElement.blur(); modal.classList.remove('active'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+
+  document.querySelectorAll('[data-open-modal]').forEach(btn => btn.addEventListener('click', () => {
+    openModal();
+    if (currentStudent || !btn.dataset.authTab) return;
+    const target = [...tabs].find(t => t.dataset.tab === btn.dataset.authTab);
+    if (target && !target.classList.contains('active')) target.click();
+  }));
+  document.querySelectorAll('[data-close-modal]').forEach(btn => btn.addEventListener('click', closeModal));
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeModal();
+      closeQuiz();
+      closeSubject();
+      closeDashboard();
+      closeTeacherModal();
+      closeTeacherDashboard();
+      closeCourseModal();
+      closeConfirm();
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  const tabs = modal.querySelectorAll('.auth-tabs .tab');
+  const forms = { login: document.getElementById('formLogin'), signup: document.getElementById('formSignup') };
+  const authTitle = document.getElementById('authTitle');
+  const authSub = document.getElementById('authSub');
+  const authCard = modal.querySelector('.modal-card');
+
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    Object.entries(forms).forEach(([key, form]) => form.classList.toggle('active', key === tab.dataset.tab));
+    authCard.classList.toggle('signup-bg', tab.dataset.tab === 'signup');
+    if (tab.dataset.tab === 'login') {
+      authTitle.textContent = 'مرحباً بعودتك';
+      authSub.textContent = 'سجّل دخولك لمتابعة رحلة التعلم';
+    } else {
+      authTitle.textContent = 'إنشاء حساب جديد';
+      authSub.textContent = 'انضم إلى الشعيب وابدأ التعلم مجاناً';
+    }
+  }));
+
+  const toast = document.getElementById('toast');
+  function showToast(msg) {
+    toast.querySelector('span').textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  /* روابط التواصل الاجتماعي: لا توجد صفحات فعلية بعد — رسالة صادقة بدل رابط وهمي */
+  document.addEventListener('click', e => {
+    const social = e.target.closest('.social-row a[href="#"], .social a[href="#"]');
+    if (!social) return;
+    e.preventDefault();
+    showToast('صفحات التواصل الاجتماعي ستُضاف قريباً. للتواصل الفوري استخدم واتساب من قسم الدعم الفني.');
+  });
+
+  /* ===== حسابات الطلاب — على الخادم وقاعدة بيانات حقيقية =====
+     الحسابات أصبحت محفوظة على الخادم (server.js + SQLite) وليست في المتصفح:
+     - كلمة المرور لا تُحفظ كنص صريح أبداً — تُجزَّأ على الخادم بـ scrypt مع ملح خاص بكل طالب.
+     - الجلسة تُدار على الخادم بكوكي HttpOnly آمنة، ويعمل الحساب نفسه من أي جهاز.
+     - نسخة localStorage الحالية من الحسابات تبقى كما هي في المتصفح وتُرفع مرة واحدة إلى الخادم. */
+  const ACCOUNTS_KEY = 'alshuaib:accounts';        /* نسخة محلية سابقة — تُقرأ للترحيل فقط */
+  const SESSION_KEY = 'alshuaib:session';          /* جلسة محلية قديمة — تُنظَّف بعد الترحيل */
+  const LEGACY_STUDENTS_KEY = 'alshuaib:students'; /* سجل قديم (بريد بلا كلمة مرور) — يُرحَّل أيضاً */
+  const MIGRATED_KEY = 'alshuaib:migratedToServer:v1';
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  const loadAccounts = () => {
+    try {
+      const list = JSON.parse(localStorage.getItem(ACCOUNTS_KEY));
+      return Array.isArray(list) ? list : [];
+    } catch { return []; }
+  };
+
+  /* نداء موحّد لواجهات الخادم: يعيد {ok, status, data} ولا يكسر الصفحة عند فشل الاتصال */
+  async function api(path, options = {}) {
+    try {
+      const res = await fetch(path, {
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        ...options
+      });
+      const data = await res.json().catch(() => ({}));
+      return { ok: res.ok, status: res.status, data };
+    } catch {
+      return { ok: false, status: 0, data: {} };
+    }
+  }
+
+  /* رسالة موحّدة عند تعذّر الوصول إلى الخادم */
+  const OFFLINE_MSG = 'تعذّر الاتصال بالخادم. شغّل خادم المنصة (npm start) وافتح الصفحة من عنوانه مثل http://localhost:3000 ثم حاول مرة أخرى.';
+
+  /* فحص تعارض بريد الطلاب (يستخدمه تسجيل المدرسين) — يعيد null عند تعذّر الاتصال */
+  async function studentEmailExists(email) {
+    const { ok, data } = await api('/api/students/exists?email=' + encodeURIComponent(email));
+    return ok ? !!data.exists : null;
+  }
+
+  /* ترحيل لمرة واحدة: رفع الحسابات المحفوظة محلياً إلى قاعدة بيانات الخادم،
+     مع الإبقاء على النسخة المحلية في المتصفح كما هي احتياطياً. */
+  async function migrateLocalAccounts() {
+    try { if (localStorage.getItem(MIGRATED_KEY)) return; } catch {}
+    const list = loadAccounts().map(a => ({
+      name: a.name || '',
+      email: String(a.email || '').trim().toLowerCase(),
+      salt: a.salt || '',
+      hash: a.hash || '',
+      avatar: a.avatar || null,
+      createdAt: a.createdAt || Date.now(),
+      legacy: !!a.legacy
+    })).filter(a => a.email);
+    try {
+      const legacy = JSON.parse(localStorage.getItem(LEGACY_STUDENTS_KEY));
+      if (Array.isArray(legacy)) legacy.forEach(email => {
+        const id = String(email || '').trim().toLowerCase();
+        if (id && !list.some(a => a.email === id)) list.push({ email: id, legacy: true, createdAt: Date.now() });
+      });
+    } catch {}
+    if (list.length) {
+      const { ok } = await api('/api/migrate', { method: 'POST', body: JSON.stringify({ accounts: list }) });
+      if (!ok) return; /* تعذّر الترحيل — نعيد المحاولة تلقائياً في المرة القادمة */
+    }
+    try {
+      localStorage.setItem(MIGRATED_KEY, String(Date.now()));
+      localStorage.removeItem(SESSION_KEY);
+      sessionStorage.removeItem(SESSION_KEY);
+    } catch {}
+  }
+
+  function makeSalt() {
+    const bytes = new Uint8Array(16);
+    if (crypto.getRandomValues) crypto.getRandomValues(bytes);
+    else for (let i = 0; i < bytes.length; i++) bytes[i] = Math.floor(Math.random() * 256);
+    return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function hashPassword(password, salt) {
+    const str = salt + ':' + password;
+    if (crypto.subtle) {
+      try {
+        const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+        return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('');
+      } catch {}
+    }
+    /* بديل احتياطي إذا تعذّر crypto.subtle في بعض المتصفحات */
+    let h1 = 5381, h2 = 52711;
+    for (let i = 0; i < str.length; i++) {
+      const c = str.charCodeAt(i);
+      h1 = ((h1 * 33) ^ c) >>> 0;
+      h2 = ((h2 * 31) ^ c) >>> 0;
+    }
+    return 'fallback-' + h1.toString(16) + h2.toString(16);
+  }
+
+  /* ===== جلسة الطالب — تُدار على الخادم ===== */
+  let currentStudent = null;
+
+  /* تُستدعى بعد نجاح الدخول/التسجيل: الخادم أنشأ الجلسة ووضع الكوكي الآمنة */
+  function startStudentSession(student) {
+    currentStudent = student || null;
+    updateAuthUI();
+  }
+
+  /* تسجيل الخروج: نحذف الجلسة من الخادم ونمسح الحالة المحلية فوراً */
+  function endStudentSession() {
+    currentStudent = null;
+    updateAuthUI();
+    return api('/api/auth/logout', { method: 'POST' }).catch(() => {});
+  }
+
+  /* استعادة الجلسة عند فتح الصفحة: الخادم وحده يحدد صاحب الجلسة إن وُجدت */
+  async function restoreSession() {
+    const { ok, data } = await api('/api/auth/me');
+    currentStudent = ok && data.student ? data.student : null;
+    updateAuthUI();
+  }
+
+  function updateAuthUI() {
+    const label = currentStudent ? 'لوحة الطالب' : 'تسجيل الدخول';
+    document.querySelectorAll('.auth-nav-label').forEach(el => { el.textContent = label; });
+  }
+
+  /* ===== لوحة الطالب ===== */
+  const fmtDate = ts => ts ? new Date(ts).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) : '—';
+
+  function fillDashboard() {
+    const a = currentStudent;
+    document.getElementById('dashName').textContent = a.name || 'طالبنا العزيز';
+    document.getElementById('dashAccName').textContent = a.name || '—';
+    document.getElementById('dashAccEmail').textContent = a.email;
+    document.getElementById('dashAccDate').textContent = fmtDate(a.createdAt);
+
+    /* ملفي الشخصي */
+    document.getElementById('dashHeroEmail').textContent = a.email;
+    document.getElementById('profName').value = a.name || '';
+    document.getElementById('profEmail').value = a.email;
+    pendingAvatar = undefined;
+    profAvatarInput.value = '';
+    hideMsg('profileError'); hideMsg('profileSuccess');
+    hideMsg('pwError'); hideMsg('pwSuccess');
+    pwForm.reset();
+    resetPwToggles(pwForm);
+    renderAvatarPreview();
+
+    /* الأرقام حقيقية ومشتقة من التحاقات الفعلية على هذا الجهاز */
+    const mine = myEnrolledCourses();
+    document.getElementById('dashStatCourses').textContent = mine.length;
+    document.getElementById('dashStatLectures').textContent = mine.reduce((n, c) => n + c.lectures.length, 0);
+    document.getElementById('dashStatTests').textContent = 0;
+    document.getElementById('dashStatSubjects').textContent = new Set(mine.map(c => c.subject)).size;
+
+    renderStudentCourses();
+    renderStudentProgress();
+  }
+
+  function openDashboard() {
+    if (!currentStudent) return;
+    fillDashboard();
+    /* اللوحة تُفتح دائماً على تبويب «ملفي الشخصي» */
+    document.querySelectorAll('.dash-tab').forEach(b => {
+      const on = b.dataset.dashTab === 'profile';
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', String(on));
+    });
+    document.querySelectorAll('.dash-pane').forEach(p =>
+      p.classList.toggle('active', p.dataset.dashPane === 'profile'));
+    dashboard.scrollTop = 0;
+    dashboard.classList.add('active');
+    dashboard.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDashboard() {
+    if (dashboard.contains(document.activeElement)) document.activeElement.blur();
+    dashboard.classList.remove('active');
+    dashboard.setAttribute('aria-hidden', 'true');
+    if (!modal.classList.contains('active')) document.body.style.overflow = '';
+  }
+
+  /* ===== تطوير لوحة الطالب: تبويبات + ملف شخصي + أمان الحساب =====
+     كل التعديلات تُحفظ في قاعدة البيانات على الخادم عبر واجهات /api/auth/*،
+     وكلمة المرور لا تُعرض ولا تُحفظ كنص صريح أبداً (تجزئة scrypt على الخادم). */
+  const profileForm = document.getElementById('formProfile');
+  const pwForm = document.getElementById('formPwChange');
+  const profAvatarInput = document.getElementById('profAvatarInput');
+  let pendingAvatar; /* بلا قيمة = بلا تغيير | null = إزالة الصورة | نص = صورة جديدة مجهزة للحفظ */
+
+  const hideMsg = id => { const box = document.getElementById(id); box.hidden = true; box.textContent = ''; };
+  const showSuccess = (id, msg) => { const box = document.getElementById(id); box.textContent = msg; box.hidden = false; };
+
+  const initialsPlain = name => {
+    const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+    return parts.slice(0, 2).map(p => p[0]).join('') || 'م';
+  };
+
+  function applyAvatarEl(el, src) {
+    if (src) el.innerHTML = '<img src="' + src + '" alt="">';
+    else el.textContent = initialsPlain(currentStudent ? currentStudent.name : '');
+  }
+
+  function renderAvatarPreview() {
+    const src = pendingAvatar !== undefined ? pendingAvatar : (currentStudent ? currentStudent.avatar : null);
+    applyAvatarEl(document.getElementById('dashAvatar'), src);
+    applyAvatarEl(document.getElementById('profAvatar'), src);
+    document.getElementById('profAvatarRemove').hidden = !src;
+  }
+
+  /* ضغط الصورة إلى 200×200 بجودة مناسبة قبل تخزينها */
+  function resizeAvatar(file, cb) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          const size = 200;
+          const c = document.createElement('canvas');
+          c.width = size; c.height = size;
+          const ctx = c.getContext('2d');
+          const scale = Math.max(size / img.width, size / img.height);
+          const w = img.width * scale, h = img.height * scale;
+          ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
+          cb(c.toDataURL('image/jpeg', .85));
+        } catch { cb(null); }
+      };
+      img.onerror = () => cb(null);
+      img.src = e.target.result;
+    };
+    reader.onerror = () => cb(null);
+    reader.readAsDataURL(file);
+  }
+
+  /* تبويبات اللوحة */
+  document.querySelectorAll('.dash-tab').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.dash-tab').forEach(b => {
+      const on = b === btn;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', String(on));
+    });
+    document.querySelectorAll('.dash-pane').forEach(p =>
+      p.classList.toggle('active', p.dataset.dashPane === btn.dataset.dashTab));
+  }));
+
+  /* زر «تصفح الكورسات» داخل الحالات الفارغة */
+  dashboard.addEventListener('click', e => {
+    if (!e.target.closest('[data-dash-explore]')) return;
+    closeDashboard();
+    const target = document.getElementById('courses');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* الصورة الشخصية: اختيار / إزالة */
+  document.getElementById('profAvatarBtn').addEventListener('click', () => profAvatarInput.click());
+  profAvatarInput.addEventListener('change', () => {
+    const file = profAvatarInput.files && profAvatarInput.files[0];
+    if (!file) return;
+    hideMsg('profileError'); hideMsg('profileSuccess');
+    if (!/^image\//.test(file.type)) {
+      showError('profileError', 'يرجى اختيار ملف صورة صالح (JPG أو PNG).');
+      profAvatarInput.value = '';
+      return;
+    }
+    resizeAvatar(file, dataUrl => {
+      if (!dataUrl) { showError('profileError', 'تعذّر قراءة الصورة. جرّب صورة أخرى.'); return; }
+      pendingAvatar = dataUrl;
+      renderAvatarPreview();
+    });
+  });
+  document.getElementById('profAvatarRemove').addEventListener('click', () => {
+    pendingAvatar = null;
+    hideMsg('profileError'); hideMsg('profileSuccess');
+    renderAvatarPreview();
+  });
+
+  /* حفظ تعديلات الملف الشخصي — في قاعدة البيانات عبر الخادم */
+  profileForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    hideMsg('profileError'); hideMsg('profileSuccess');
+    const nameInput = document.getElementById('profName');
+    const name = nameInput.value.trim();
+    if (name.length < 2) {
+      nameInput.classList.add('invalid');
+      showError('profileError', 'يرجى إدخال الاسم الكامل (حرفان على الأقل).');
+      return;
+    }
+    const payload = { name };
+    if (pendingAvatar === null) payload.avatar = null;
+    else if (typeof pendingAvatar === 'string') payload.avatar = pendingAvatar;
+    const { ok, status, data } = await api('/api/auth/profile', { method: 'PATCH', body: JSON.stringify(payload) });
+    if (!ok) {
+      showError('profileError', status === 401
+        ? 'انتهت الجلسة — سجّل الدخول من جديد ثم أعد المحاولة.'
+        : (status === 0 ? OFFLINE_MSG : 'تعذّر حفظ التغييرات الآن. حاول مرة أخرى.'));
+      return;
+    }
+    currentStudent = data.student;
+    pendingAvatar = undefined;
+    updateAuthUI();
+    fillDashboard();
+    showSuccess('profileSuccess', 'تم حفظ التغييرات بنجاح.');
+    showToast('تم حفظ التغييرات بنجاح.');
+  });
+
+  /* تغيير كلمة المرور — يتحقق منها الخادم ويُجزّئها بـ scrypt؛ لا تُعرض ولا تُخزَّن كنص صريح */
+  pwForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    hideMsg('pwError'); hideMsg('pwSuccess');
+    const cur = document.getElementById('pwCurrent');
+    const nw = document.getElementById('pwNew');
+    const cf = document.getElementById('pwConfirm');
+    const curV = cur.value, nwV = nw.value, cfV = cf.value;
+    if (!curV) { cur.classList.add('invalid'); showError('pwError', 'يرجى إدخال كلمة المرور الحالية.'); return; }
+    if (!nwV) { nw.classList.add('invalid'); showError('pwError', 'يرجى إدخال كلمة المرور الجديدة.'); return; }
+    if (nwV.length < 6) { nw.classList.add('invalid'); showError('pwError', 'كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل.'); return; }
+    if (!cfV) { cf.classList.add('invalid'); showError('pwError', 'يرجى تأكيد كلمة المرور الجديدة.'); return; }
+    if (nwV !== cfV) { cf.classList.add('invalid'); showError('pwError', 'كلمتا المرور الجديدتان غير متطابقتين. حاول مرة أخرى.'); return; }
+    if (nwV === curV) { nw.classList.add('invalid'); showError('pwError', 'كلمة المرور الجديدة مطابقة للحالية — اختر كلمة مرور مختلفة.'); return; }
+
+    const { ok, status, data } = await api('/api/auth/password', {
+      method: 'POST',
+      body: JSON.stringify({ currentPassword: curV, newPassword: nwV })
+    });
+    if (!ok) {
+      const code = data.error;
+      if (code === 'WRONG_CURRENT') {
+        cur.classList.add('invalid');
+        showError('pwError', 'كلمة المرور الحالية غير صحيحة. حاول مرة أخرى.');
+        return;
+      }
+      if (code === 'SAME_PASSWORD') {
+        nw.classList.add('invalid');
+        showError('pwError', 'كلمة المرور الجديدة مطابقة للحالية — اختر كلمة مرور مختلفة.');
+        return;
+      }
+      if (code === 'WEAK_PASSWORD') {
+        nw.classList.add('invalid');
+        showError('pwError', 'كلمة المرور الجديدة يجب أن تكون 6 أحرف على الأقل.');
+        return;
+      }
+      if (code === 'LEGACY_ACCOUNT') {
+        showError('pwError', 'هذا الحساب قديم ولا يدعم تغيير كلمة المرور. أكمل حسابك من نموذج «حساب جديد» بنفس البريد ثم أعد المحاولة.');
+        return;
+      }
+      if (code === 'RATE_LIMITED') {
+        showError('pwError', 'محاولات كثيرة متكررة. انتظر قليلاً ثم حاول مرة أخرى.');
+        return;
+      }
+      showError('pwError', status === 401
+        ? 'انتهت الجلسة — سجّل الدخول من جديد ثم أعد المحاولة.'
+        : (status === 0 ? OFFLINE_MSG : 'تعذّر تغيير كلمة المرور الآن. حاول مرة أخرى.'));
+      return;
+    }
+    pwForm.reset();
+    resetPwToggles(pwForm);
+    showSuccess('pwSuccess', 'تم تغيير كلمة المرور بنجاح. استخدم الكلمة الجديدة عند تسجيل الدخول القادم.');
+    showToast('تم تغيير كلمة المرور بنجاح.');
+  });
+
+  /* ===== موادي وتقدمي: من بيانات الالتحاق الحقيقية ===== */
+  const myEnrollments = () => currentStudent
+    ? enrollments.filter(en => en.studentEmail === currentStudent.email)
+    : [];
+
+  const myEnrolledCourses = () => myEnrollments()
+    .map(en => teacherCourses.find(c => c.id === en.courseId))
+    .filter(Boolean);
+
+  function renderStudentCourses() {
+    const wrap = document.getElementById('dashCoursesWrap');
+    if (!wrap) return;
+    const list = myEnrollments()
+      .slice()
+      .sort((x, y) => (y.ts || 0) - (x.ts || 0))
+      .map(en => ({ en, c: teacherCourses.find(c => c.id === en.courseId) }))
+      .filter(x => x.c);
+    if (!list.length) {
+      wrap.innerHTML = `
+        <div class="grid-empty">
+          <span class="icon-box s1"><svg class="ic"><use href="#i-book"/></svg></span>
+          <h3>لم تلتحق بأي كورس بعد</h3>
+          <p>تصفّح الكورسات من الصفحة الرئيسية والتحق بأول كورس لك — سيظهر هنا فوراً.</p>
+          <button class="btn btn-primary btn-sm" type="button" data-dash-explore>تصفّح الكورسات</button>
+        </div>`;
+      return;
+    }
+    wrap.innerHTML = '<div class="tc-list">' + list.map(({ en, c }) => {
+      const s = subjectOf(c.subject);
+      const t = teachers.find(x => x.email === c.teacherEmail);
+      return `
+        <article class="tc-card">
+          <div class="tc-top">
+            <span class="tc-badge"><svg class="ic"><use href="#${s ? s.icon : 'i-book'}"/></svg>${esc(s ? s.name : 'مادة دراسية')}</span>
+            <span class="tc-date">التحقت في ${fmtDate(en.ts)}</span>
+          </div>
+          <h4 class="tc-title">${esc(c.title)}</h4>
+          <p class="tc-desc">${esc(c.desc)}</p>
+          <div class="tc-meta-row">
+            <span><svg class="ic"><use href="#i-list"/></svg>${arCount(c.lectures.length, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+            <span><svg class="ic"><use href="#i-user"/></svg>المدرس: ${esc(t ? t.name : 'غير معروف')}</span>
+          </div>
+        </article>`;
+    }).join('') + '</div>';
+  }
+
+  function renderStudentProgress() {
+    const wrap = document.getElementById('dashProgWrap');
+    if (!wrap) return;
+    const mine = myEnrolledCourses();
+    if (!mine.length) {
+      wrap.innerHTML = `
+        <div class="grid-empty">
+          <span class="icon-box s6"><svg class="ic"><use href="#i-trending"/></svg></span>
+          <h3>لا يوجد تقدم لعرضه بعد</h3>
+          <p>بمجرد التحاقك بأول كورس سيظهر هنا ملخص حقيقي لتقدمك: عدد كورساتك وموادك والمحاضرات المتاحة لك.</p>
+        </div>`;
+      return;
+    }
+    const lectures = mine.reduce((n, c) => n + c.lectures.length, 0);
+    const subjects = new Set(mine.map(c => c.subject)).size;
+    wrap.innerHTML = `
+      <div class="prog-stats">
+        <div class="dash-stat"><strong>${mine.length}</strong><span>كورس ملتحق به</span></div>
+        <div class="dash-stat"><strong>${subjects}</strong><span>مادة دراسية</span></div>
+        <div class="dash-stat"><strong>${lectures}</strong><span>محاضرة متاحة لك</span></div>
+      </div>
+      <p class="prog-note">هذه الأرقام محسوبة من التحاقاتك الفعلية بالكورسات على هذا الجهاز.</p>`;
+  }
+
+  document.getElementById('dashBack').addEventListener('click', closeDashboard);
+  document.getElementById('dashLogout').addEventListener('click', () => {
+    openConfirm('تسجيل الخروج', 'هل أنت متأكد من تسجيل الخروج من حسابك؟ يمكنك تسجيل الدخول مجدداً في أي وقت.', () => {
+      endStudentSession();
+      closeDashboard();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('تم تسجيل الخروج بنجاح. نراك قريباً!');
+    }, 'نعم، سجّل الخروج');
+  });
+
+  /* ===== التحقق ورسائل الخطأ ===== */
+  function showError(id, msg) {
+    const box = document.getElementById(id);
+    box.textContent = msg;
+    box.hidden = false;
+  }
+
+  const AUTH_FIELDS = '#formLogin input, #formSignup input, #formTeacherLogin input, #formTeacherSignup input, #formTeacherSignup select, #formTeacherSignup textarea, #formCourse input, #formCourse textarea, #formProfile input, #formPwChange input';
+
+  function resetAuthErrors() {
+    document.querySelectorAll(AUTH_FIELDS).forEach(inp => inp.classList.remove('invalid'));
+    ['loginError', 'signupError', 'teacherLoginError', 'teacherSignupError', 'courseError', 'profileError', 'pwError'].forEach(id => {
+      const box = document.getElementById(id);
+      box.hidden = true;
+      box.textContent = '';
+    });
+  }
+
+  document.querySelectorAll(AUTH_FIELDS).forEach(inp =>
+    inp.addEventListener('input', () => inp.classList.remove('invalid')));
+
+  /* ===== إظهار/إخفاء كلمة المرور ===== */
+  function resetPwToggles(formEl) {
+    formEl.querySelectorAll('[data-pw-toggle]').forEach(btn => {
+      btn.closest('.input-wrap').querySelector('input').type = 'password';
+      btn.querySelector('use').setAttribute('href', '#i-eye');
+      btn.setAttribute('aria-label', 'إظهار كلمة المرور');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+  }
+
+  document.querySelectorAll('[data-pw-toggle]').forEach(btn => btn.addEventListener('click', () => {
+    const input = btn.closest('.input-wrap').querySelector('input');
+    const show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    btn.querySelector('use').setAttribute('href', show ? '#i-eye-off' : '#i-eye');
+    btn.setAttribute('aria-label', show ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور');
+    btn.setAttribute('aria-pressed', String(show));
+  }));
+
+  /* ===== تسجيل الدخول — عبر الخادم وقاعدة البيانات ===== */
+  forms.login.addEventListener('submit', async e => {
+    e.preventDefault();
+    resetAuthErrors();
+    const email = forms.login.email.value.trim().toLowerCase();
+    const password = forms.login.password.value;
+
+    if (!email) { forms.login.email.classList.add('invalid'); return showError('loginError', 'يرجى إدخال البريد الإلكتروني.'); }
+    if (!EMAIL_RE.test(email)) { forms.login.email.classList.add('invalid'); return showError('loginError', 'يرجى إدخال بريد إلكتروني صحيح، مثل: example@alshuaib.com'); }
+    if (!password) { forms.login.password.classList.add('invalid'); return showError('loginError', 'يرجى إدخال كلمة المرور.'); }
+
+    const remember = forms.login.remember.checked;
+    const { ok, status, data } = await api('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, remember })
+    });
+    if (!ok) {
+      const code = data.error;
+      if (code === 'NO_ACCOUNT') { forms.login.email.classList.add('invalid'); return showError('loginError', 'لا يوجد حساب مسجّل بهذا البريد الإلكتروني. تأكد من البريد أو أنشئ حساباً جديداً.'); }
+      if (code === 'LEGACY_ACCOUNT') return showError('loginError', 'هذا الحساب أُنشئ في نسخة سابقة قبل تفعيل كلمات المرور — أنشئ الحساب من جديد بنفس البريد لإكماله.');
+      if (code === 'WRONG_PASSWORD') { forms.login.password.classList.add('invalid'); return showError('loginError', 'كلمة المرور غير صحيحة. حاول مرة أخرى.'); }
+      if (code === 'RATE_LIMITED') return showError('loginError', 'محاولات كثيرة متكررة. انتظر قليلاً ثم حاول مرة أخرى.');
+      return showError('loginError', status === 0 ? OFFLINE_MSG : 'تعذّر تسجيل الدخول الآن. حاول مرة أخرى.');
+    }
+
+    startStudentSession(data.student);
+    forms.login.reset();
+    resetPwToggles(forms.login);
+    closeModal();
+    openDashboard();
+    showToast('تم تسجيل الدخول بنجاح، مرحباً بعودتك' + (data.student && data.student.name ? ' يا ' + data.student.name.split(/\s+/)[0] : '') + '!');
+  });
+
+  /* ===== إنشاء حساب جديد — عبر الخادم وقاعدة البيانات ===== */
+  forms.signup.addEventListener('submit', async e => {
+    e.preventDefault();
+    resetAuthErrors();
+    const name = forms.signup.fullname.value.trim();
+    const email = forms.signup.email.value.trim().toLowerCase();
+    const password = forms.signup.password.value;
+    const confirm = forms.signup.confirm.value;
+
+    if (name.length < 2) { forms.signup.fullname.classList.add('invalid'); return showError('signupError', 'يرجى إدخال الاسم الكامل (حرفان على الأقل).'); }
+    if (!email) { forms.signup.email.classList.add('invalid'); return showError('signupError', 'يرجى إدخال البريد الإلكتروني.'); }
+    if (!EMAIL_RE.test(email)) { forms.signup.email.classList.add('invalid'); return showError('signupError', 'يرجى إدخال بريد إلكتروني صحيح، مثل: example@alshuaib.com'); }
+    if (!password) { forms.signup.password.classList.add('invalid'); return showError('signupError', 'يرجى إدخال كلمة المرور.'); }
+    if (password.length < 6) { forms.signup.password.classList.add('invalid'); return showError('signupError', 'كلمة المرور يجب أن تكون 6 أحرف على الأقل.'); }
+    if (!confirm) { forms.signup.confirm.classList.add('invalid'); return showError('signupError', 'يرجى تأكيد كلمة المرور.'); }
+    if (confirm !== password) { forms.signup.confirm.classList.add('invalid'); return showError('signupError', 'كلمتا المرور غير متطابقتين. حاول مرة أخرى.'); }
+
+    const { ok, status, data } = await api('/api/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password })
+    });
+    if (!ok) {
+      const code = data.error;
+      if (code === 'EMAIL_TAKEN') { forms.signup.email.classList.add('invalid'); return showError('signupError', 'هذا البريد الإلكتروني مسجّل مسبقاً — سجّل الدخول بدلاً من ذلك.'); }
+      if (code === 'INVALID_NAME') { forms.signup.fullname.classList.add('invalid'); return showError('signupError', 'يرجى إدخال الاسم الكامل (حرفان على الأقل).'); }
+      if (code === 'INVALID_EMAIL') { forms.signup.email.classList.add('invalid'); return showError('signupError', 'يرجى إدخال بريد إلكتروني صحيح، مثل: example@alshuaib.com'); }
+      if (code === 'WEAK_PASSWORD') { forms.signup.password.classList.add('invalid'); return showError('signupError', 'كلمة المرور يجب أن تكون 6 أحرف على الأقل.'); }
+      if (code === 'RATE_LIMITED') return showError('signupError', 'محاولات كثيرة متكررة. انتظر قليلاً ثم حاول مرة أخرى.');
+      return showError('signupError', status === 0 ? OFFLINE_MSG : 'تعذّر إنشاء الحساب الآن. حاول مرة أخرى.');
+    }
+
+    startStudentSession(data.student);
+    refreshStudentCounter();
+    forms.signup.reset();
+    resetPwToggles(forms.signup);
+    closeModal();
+    openDashboard();
+    showToast('تم إنشاء حسابك بنجاح! ابدأ رحلتك التعليمية الآن.');
+  });
+
+  /* عند الإقلاع: ترحيل الحسابات المحلية (مرة واحدة) ثم استعادة الجلسة من الخادم وتحديث العداد */
+  migrateLocalAccounts().finally(() => {
+    restoreSession();
+    refreshStudentCounter();
+  });
+
+  /* ===== حسابات المدرسين =====
+     نفس نمط حسابات الطلاب تماماً: تجزئة SHA-256 مع ملح عشوائي خاص بكل مدرس،
+     ولا تُحفظ كلمة المرور كنص صريح أبداً. جلسة المدرس مستقلة كلياً عن جلسة الطالب،
+     وبيانات كل مدرس (كورساته) مربوطة ببريده ولا يستطيع أي مدرس آخر الوصول إليها. */
+  const TEACHERS_KEY = 'alshuaib:teachers';
+  const TEACHER_SESSION_KEY = 'alshuaib:teacherSession';
+  const COURSES_KEY = 'alshuaib:courses';
+
+  const loadTeachers = () => {
+    try {
+      const list = JSON.parse(localStorage.getItem(TEACHERS_KEY));
+      return Array.isArray(list) ? list : [];
+    } catch { return []; }
+  };
+  const saveTeachers = () => { try { localStorage.setItem(TEACHERS_KEY, JSON.stringify(teachers)); } catch {} };
+
+  let teachers = loadTeachers();
+
+  const loadTeacherCourses = () => {
+    try {
+      const list = JSON.parse(localStorage.getItem(COURSES_KEY));
+      return Array.isArray(list) ? list : [];
+    } catch { return []; }
+  };
+  const saveTeacherCourses = () => { try { localStorage.setItem(COURSES_KEY, JSON.stringify(teacherCourses)); } catch {} };
+
+  let teacherCourses = loadTeacherCourses();
+
+  const teacherCount = () => teachers.length;
+  const coursesOf = email => teacherCourses.filter(c => c.teacherEmail === email);
+  const subjectOf = key => SUBJECTS_DATA.find(s => s.key === key) || null;
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+  let currentTeacher = null;
+
+  function startTeacherSession(email, remember) {
+    const data = JSON.stringify({ email, ts: Date.now() });
+    try {
+      if (remember) { localStorage.setItem(TEACHER_SESSION_KEY, data); sessionStorage.removeItem(TEACHER_SESSION_KEY); }
+      else { sessionStorage.setItem(TEACHER_SESSION_KEY, data); localStorage.removeItem(TEACHER_SESSION_KEY); }
+    } catch {}
+    currentTeacher = teachers.find(a => a.email === email) || null;
+  }
+
+  function endTeacherSession() {
+    try { localStorage.removeItem(TEACHER_SESSION_KEY); sessionStorage.removeItem(TEACHER_SESSION_KEY); } catch {}
+    currentTeacher = null;
+  }
+
+  function restoreTeacherSession() {
+    let raw = null;
+    try { raw = localStorage.getItem(TEACHER_SESSION_KEY) || sessionStorage.getItem(TEACHER_SESSION_KEY); } catch {}
+    if (raw) {
+      try {
+        const email = JSON.parse(raw).email;
+        const account = teachers.find(a => a.email === email);
+        if (account) currentTeacher = account;
+        else { localStorage.removeItem(TEACHER_SESSION_KEY); sessionStorage.removeItem(TEACHER_SESSION_KEY); }
+      } catch { try { localStorage.removeItem(TEACHER_SESSION_KEY); sessionStorage.removeItem(TEACHER_SESSION_KEY); } catch {} }
+    }
+  }
+
+  restoreTeacherSession();
+
+  const lectureTabs = document.querySelectorAll('[data-lecture-tab]');
+  const lecturePanes = {
+    upcoming: document.getElementById('lecturesUpcoming'),
+    recorded: document.getElementById('lecturesRecorded')
+  };
+  lectureTabs.forEach(tab => tab.addEventListener('click', () => {
+    lectureTabs.forEach(t => {
+      const active = t === tab;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-pressed', active);
+    });
+    Object.entries(lecturePanes).forEach(([key, pane]) => { pane.hidden = key !== tab.dataset.lectureTab; });
+  }));
+
+  /* ===== المواد الدراسية =====
+     المنصة فارغة حالياً — أضف الكورسات والمحاضرات داخل courses لكل مادة من هنا. */
+  const arCount = (n, one, two, many) => n === 1 ? one : n === 2 ? two : n + ' ' + many;
+
+  const SUBJECTS_DATA = [
+    {
+      key: 'arabic', name: 'اللغة العربية', sub: 'النحو والبلاغة والأدب والكتابة', icon: 'i-book', color: 's3',
+      courses: []
+    },
+    {
+      key: 'english', name: 'اللغة الإنجليزية', sub: 'القواعد والمحادثة والقراءة والكتابة', icon: 'i-globe', color: 's2',
+      courses: []
+    },
+    {
+      key: 'math', name: 'الرياضيات', sub: 'الجبر والهندسة والتفاضل والتكامل', icon: 'i-calc', color: 's1',
+      courses: []
+    },
+    {
+      key: 'chemistry', name: 'الكيمياء', sub: 'الكيمياء العامة والعضوية والتفاعلات', icon: 'i-flask', color: 's4',
+      courses: []
+    },
+    {
+      key: 'history', name: 'التاريخ', sub: 'الحضارات والتاريخ الإسلامي والعالمي', icon: 'i-landmark', color: 's5',
+      courses: []
+    },
+    {
+      key: 'philosophy', name: 'الفلسفة', sub: 'المنطق والفكر والأخلاق وفلسفة العلوم', icon: 'i-lightbulb', color: 's6',
+      courses: []
+    }
+  ];
+
+  /* ===== المدرسون =====
+     لا يوجد مدرسون تجريبيون — المدرسون الحقيقيون يُنشئون حساباتهم من "بوابة المدرسين"،
+     وتُحفظ بياناتهم في هذا المتصفح (alshuaib:teachers) وعدّاد الإحصائيات يعتمد عليها. */
+
+  const coursesInSubject = s => s.courses.concat(teacherCourses.filter(c => c.subject === s.key));
+  const subjectCount = s => arCount(coursesInSubject(s).length, 'كورس واحد', 'كورسان', 'كورسات');
+  const subjectLectures = s => coursesInSubject(s).reduce((t, c) => t + c.lectures.length, 0);
+  const totalCourses = () => SUBJECTS_DATA.reduce((t, s) => t + coursesInSubject(s).length, 0);
+
+  const subjectsGrid = document.getElementById('subjectsGrid');
+  const renderSubjects = () => {
+    subjectsGrid.innerHTML = SUBJECTS_DATA.map(s => `
+    <article class="subject-card">
+      <span class="icon-box ${s.color}"><svg class="ic"><use href="#${s.icon}"/></svg></span>
+      <h3>${s.name}</h3>
+      <p>${s.sub}</p>
+      <div class="subject-foot">
+        <span class="subject-count"><svg class="ic"><use href="#i-list"/></svg>${subjectCount(s)} · ${arCount(subjectLectures(s), 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+        <button class="subject-open" type="button" data-subject="${s.key}">
+          دخول المادة
+          <svg class="ic"><use href="#i-chevron"/></svg>
+        </button>
+      </div>
+    </article>
+  `).join('');
+  };
+  renderSubjects();
+
+  const subjectModal = document.getElementById('subjectModal');
+  const subjectIcon = document.getElementById('subjectIcon');
+  const subjectTitle = document.getElementById('subjectTitle');
+  const subjectSub = document.getElementById('subjectSub');
+  const subjectCourses = document.getElementById('subjectCourses');
+
+  function openSubject(key) {
+    const s = SUBJECTS_DATA.find(x => x.key === key);
+    if (!s) return;
+    const teacherList = teacherCourses.filter(c => c.subject === s.key);
+    subjectIcon.className = 'icon-box ' + s.color;
+    subjectIcon.innerHTML = `<svg class="ic"><use href="#${s.icon}"/></svg>`;
+    subjectTitle.textContent = s.name;
+    subjectSub.textContent = s.sub + ' — ' + subjectCount(s);
+    const staticHTML = s.courses.map(c => `
+      <article class="subject-course">
+        <div class="course-banner ${c.banner}">
+          <span class="course-tag">${arCount(c.lectures.length, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+          <svg class="ic banner-icon"><use href="#${c.icon}"/></svg>
+        </div>
+        <div class="sc-body">
+          <h4>${c.title}</h4>
+          <p>${c.desc}</p>
+          <div class="sc-meta">
+            <span><svg class="ic"><use href="#i-list"/></svg>${arCount(c.lectures.length, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+            <span><svg class="ic"><use href="#i-clock"/></svg>${c.duration}</span>
+          </div>
+          <ul class="sc-lectures">
+            ${c.lectures.map((l, i) => `<li><span class="sc-num">${i + 1}</span><span>${l}</span><svg class="ic"><use href="#i-play"/></svg></li>`).join('')}
+          </ul>
+          <button class="btn btn-primary" type="button" data-enroll-course="${c.title}">
+            <svg class="ic"><use href="#i-grad"/></svg>
+            الالتحاق بالكورس
+          </button>
+        </div>
+      </article>
+    `).join('');
+    const teacherHTML = teacherList.map(c => {
+      const t = teachers.find(x => x.email === c.teacherEmail);
+      return `
+      <article class="subject-course">
+        <div class="course-banner ${s.color.replace('s', 'g')}">
+          <span class="course-tag">${arCount(c.lectures.length, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+          <svg class="ic banner-icon"><use href="#${s.icon}"/></svg>
+        </div>
+        <div class="sc-body">
+          <h4>${esc(c.title)}</h4>
+          <p>${esc(c.desc)}</p>
+          <div class="sc-meta">
+            <span><svg class="ic"><use href="#i-grad"/></svg>${esc(t ? t.name : 'مدرس')}</span>
+            <span><svg class="ic"><use href="#i-list"/></svg>${arCount(c.lectures.length, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+          </div>
+          <ul class="sc-lectures">
+            ${c.lectures.map((l, i) => `<li><span class="sc-num">${i + 1}</span><span>${esc(l)}</span><svg class="ic"><use href="#i-play"/></svg></li>`).join('')}
+          </ul>
+          <button class="btn btn-primary" type="button" data-enroll-course="${esc(c.title)}" data-enroll-id="${c.id}">
+            <svg class="ic"><use href="#i-grad"/></svg>
+            الالتحاق بالكورس
+          </button>
+        </div>
+      </article>`;
+    }).join('');
+    subjectCourses.innerHTML = (staticHTML + teacherHTML) || '<p class="sc-empty">لا توجد كورسات متاحة حالياً لهذه المادة — سيتم إضافتها قريباً.</p>';
+    subjectModal.classList.add('active');
+    subjectModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSubject() {
+    if (subjectModal.contains(document.activeElement)) document.activeElement.blur();
+    subjectModal.classList.remove('active');
+    subjectModal.setAttribute('aria-hidden', 'true');
+    if (!modal.classList.contains('active')) document.body.style.overflow = '';
+  }
+
+  subjectsGrid.addEventListener('click', e => {
+    const btn = e.target.closest('[data-subject]');
+    if (btn) openSubject(btn.dataset.subject);
+  });
+
+  subjectCourses.addEventListener('click', e => {
+    const btn = e.target.closest('[data-enroll-course]');
+    if (btn) {
+      const course = btn.dataset.enrollCourse;
+      closeSubject();
+      if (currentStudent) {
+        if (btn.dataset.enrollId) {
+          const added = enrollStudent(btn.dataset.enrollId);
+          openDashboard();
+          showToast(added ? 'تم الالتحاق بكورس «' + course + '» بنجاح!' : 'أنت ملتحق بهذا الكورس بالفعل.');
+        } else {
+          openDashboard();
+          showToast('أنت مسجّل الدخول بالفعل — تابع كورساتك من لوحة الطالب.');
+        }
+      } else {
+        openModal();
+        showToast('سجّل دخولك للالتحاق بكورس: ' + course);
+      }
+    }
+  });
+
+  document.querySelectorAll('[data-close-subject]').forEach(btn => btn.addEventListener('click', closeSubject));
+  subjectModal.addEventListener('click', e => { if (e.target === subjectModal) closeSubject(); });
+
+  /* زر "عرض جميع الكورسات": عند عدم وجود كورسات منشورة تظهر رسالة واضحة بدل تمرير بلا فائدة */
+  document.getElementById('viewAllCourses').addEventListener('click', e => {
+    e.preventDefault();
+    if (totalCourses() === 0) return showToast('سيتم إضافة الكورسات قريباً — تابعنا لتصلك أولاً!');
+    document.getElementById('coursesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  const quizzes = {
+    math: {
+      title: 'اختبار المعادلات والجبر',
+      questions: [
+        { q: 'ما ناتج 2³؟', options: ['6', '8', '9', '12'], answer: 1 },
+        { q: 'حل المعادلة: س + 5 = 12', options: ['س = 5', 'س = 6', 'س = 7', 'س = 17'], answer: 2 },
+        { q: 'ما مساحة مستطيل طوله 8 سم وعرضه 3 سم؟', options: ['11 سم²', '16 سم²', '24 سم²', '38 سم²'], answer: 2 },
+        { q: 'أي مما يلي عددٌ أولي؟', options: ['9', '12', '13', '15'], answer: 2 },
+        { q: 'ما ناتج 25% من 200؟', options: ['25', '40', '50', '75'], answer: 2 }
+      ]
+    },
+    physics: {
+      title: 'اختبار قوانين الحركة',
+      questions: [
+        { q: 'ما وحدة قياس القوة في النظام الدولي؟', options: ['الجول', 'النيوتن', 'الواط', 'الأمبير'], answer: 1 },
+        { q: 'حسب قانون نيوتن الثاني: ق = ؟', options: ['ك + ت', 'ك × ت', 'ك ÷ ت', 'م × ت²'], answer: 1 },
+        { q: 'كم تُقارب سرعة الضوء في الفراغ؟', options: ['3,000 كم/ث', '30,000 كم/ث', '300,000 كم/ث', '3,000,000 كم/ث'], answer: 2 },
+        { q: 'ما وحدة قياس الطاقة؟', options: ['النيوتن', 'الجول', 'الكيلوجرام', 'المتر'], answer: 1 },
+        { q: 'عند تسخين جسم صلب فإن كثافته...؟', options: ['تزداد', 'تقل', 'لا تتغير', 'تتضاعف'], answer: 1 }
+      ]
+    },
+    arabic: {
+      title: 'اختبار قواعد النحو',
+      questions: [
+        { q: '«الطالبُ مجتهدٌ» — ما نوع الجملة؟', options: ['فعلية', 'اسمية', 'شرطية', 'استفهامية'], answer: 1 },
+        { q: 'من الفاعل في «كتب محمدٌ الدرسَ»؟', options: ['كتب', 'محمدٌ', 'الدرسَ', 'لا يوجد فاعل'], answer: 1 },
+        { q: 'ما علامة رفع المثنى؟', options: ['الضمة', 'الألف', 'الواو', 'الياء'], answer: 1 },
+        { q: '«ذهب الطلابُ إلى المدرسة» — «إلى» حرف...؟', options: ['نصب', 'جر', 'رفع', 'عطف'], answer: 1 },
+        { q: 'ما جمع كلمة «كتاب»؟', options: ['كاتِب', 'كتابات', 'كُتُب', 'مكتبة'], answer: 2 }
+      ]
+    },
+    python: {
+      title: 'اختبار أساسيات بايثون',
+      questions: [
+        { q: 'ما الدالة المستخدمة لطباعة النصوص في بايثون؟', options: ['echo()', 'print()', 'log()', 'write()'], answer: 1 },
+        { q: 'ما نوع البيانات للقيمة 3.14؟', options: ['int', 'float', 'str', 'bool'], answer: 1 },
+        { q: 'ما الرمز المستخدم لكتابة التعليقات في بايثون؟', options: ['//', '/* */', '#', '--'], answer: 2 },
+        { q: 'ما ناتج len("مرحبا")؟', options: ['4', '5', '6', 'خطأ'], answer: 1 },
+        { q: 'أي مما يلي اسم متغير صحيح في بايثون؟', options: ['2user', 'user-name', 'user name', 'user_name'], answer: 3 }
+      ]
+    }
+  };
+
+  const quizModal = document.getElementById('quizModal');
+  const quizBody = document.getElementById('quizBody');
+  const quizResult = document.getElementById('quizResult');
+  let currentQuiz = null, qIndex = 0, qScore = 0;
+
+  function openQuiz(key) {
+    currentQuiz = quizzes[key];
+    qIndex = 0;
+    qScore = 0;
+    document.getElementById('quizTitle').textContent = currentQuiz.title;
+    document.getElementById('quizSub').textContent = currentQuiz.questions.length + ' أسئلة · نتيجة فورية';
+    quizResult.classList.remove('active');
+    quizBody.style.display = '';
+    quizModal.classList.add('active');
+    quizModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    renderQuestion();
+  }
+
+  function closeQuiz() {
+    if (quizModal.contains(document.activeElement)) document.activeElement.blur();
+    quizModal.classList.remove('active');
+    quizModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function renderQuestion() {
+    const total = currentQuiz.questions.length;
+    document.getElementById('quizBar').style.width = (qIndex / total * 100) + '%';
+    document.getElementById('quizCount').textContent = 'السؤال ' + (qIndex + 1) + ' من ' + total;
+    const question = currentQuiz.questions[qIndex];
+    document.getElementById('quizQ').textContent = question.q;
+    const optionsEl = document.getElementById('quizOptions');
+    optionsEl.innerHTML = '';
+    question.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'quiz-opt';
+      btn.innerHTML = '<span class="opt-key">' + ['أ', 'ب', 'ج', 'د'][i] + '</span><span>' + opt + '</span>';
+      btn.addEventListener('click', () => answerQuiz(btn, i));
+      optionsEl.appendChild(btn);
+    });
+  }
+
+  function answerQuiz(btn, i) {
+    const question = currentQuiz.questions[qIndex];
+    const buttons = Array.from(document.querySelectorAll('.quiz-opt'));
+    buttons.forEach(b => b.disabled = true);
+    if (i === question.answer) {
+      qScore++;
+      btn.classList.add('correct');
+    } else {
+      btn.classList.add('wrong');
+      buttons[question.answer].classList.add('correct');
+    }
+    setTimeout(() => {
+      qIndex++;
+      if (qIndex < currentQuiz.questions.length) renderQuestion();
+      else showQuizResult();
+    }, 1100);
+  }
+
+  function showQuizResult() {
+    const total = currentQuiz.questions.length;
+    const pct = Math.round(qScore / total * 100);
+    document.getElementById('quizBar').style.width = '100%';
+    document.getElementById('quizCount').textContent = 'اكتمل الاختبار';
+    quizBody.style.display = 'none';
+    document.getElementById('scoreRing').style.setProperty('--pct', pct);
+    document.getElementById('scoreNum').textContent = pct + '%';
+    document.getElementById('quizMsg').textContent = pct === 100 ? 'ممتاز! نتيجة كاملة' : pct >= 60 ? 'مبروك، لقد نجحت!' : 'تحتاج إلى مزيد من المراجعة';
+    document.getElementById('quizDetail').textContent = 'أجبت بشكل صحيح عن ' + qScore + ' من ' + total + ' أسئلة.';
+    quizResult.classList.add('active');
+  }
+
+  document.querySelectorAll('[data-start-quiz]').forEach(btn => btn.addEventListener('click', () => openQuiz(btn.dataset.startQuiz)));
+  document.querySelectorAll('[data-close-quiz]').forEach(btn => btn.addEventListener('click', closeQuiz));
+  quizModal.addEventListener('click', e => { if (e.target === quizModal) closeQuiz(); });
+  document.getElementById('quizRestart').addEventListener('click', () => {
+    qIndex = 0;
+    qScore = 0;
+    quizResult.classList.remove('active');
+    quizBody.style.display = '';
+    renderQuestion();
+  });
+
+  /* ===== بوابة المدرسين ولوحة المدرس =====
+     كل شيء هنا يعمل على بيانات المتصفح المحلي (localStorage) — لا يوجد سيرفر بعد:
+     - كلمات المرور تُجزَّأ SHA-256 مع ملح عشوائي خاص بكل مدرس ولا تُحفظ كنص صريح أبداً.
+     - كل مدرس يرى ويعدّل كورساته فقط — الفلترة دائماً ببريده الإلكتروني.
+     - جلسة المدرس مستقلة كلياً عن جلسة الطالب ولا تمنح أي صلاحية على حسابات الطلاب. */
+  const teacherModal = document.getElementById('teacherModal');
+  const teacherDash = document.getElementById('teacherDash');
+  const courseModal = document.getElementById('courseModal');
+  const confirmModal = document.getElementById('confirmModal');
+  const teacherForms = {
+    tlogin: document.getElementById('formTeacherLogin'),
+    tsignup: document.getElementById('formTeacherSignup')
+  };
+  const teacherTabs = teacherModal.querySelectorAll('.auth-tabs .tab');
+  const teacherAuthTitle = document.getElementById('teacherAuthTitle');
+  const teacherAuthSub = document.getElementById('teacherAuthSub');
+
+  /* إغلاق نافذة عليا لا يجب أن يحرر تمرير الصفحة إذا بقيت نافذة أخرى مفتوحة تحتها */
+  const syncBodyScroll = () => {
+    const anyOpen = [modal, dashboard, subjectModal, quizModal, teacherModal, teacherDash, courseModal, confirmModal]
+      .some(el => el.classList.contains('active'));
+    document.body.style.overflow = anyOpen ? 'hidden' : '';
+  };
+
+  /* ===== سجل الالتحاق بالكورسات =====
+     يسجَّل لكل متصفح على حدة (localStorage): الطالب لا يُحتسب مرتين لنفس الكورس،
+     وحذف الكورس يحذف سجل الالتحاق الخاص به. */
+  const ENROLLMENTS_KEY = 'alshuaib:enrollments';
+  const loadEnrollments = () => {
+    try {
+      const list = JSON.parse(localStorage.getItem(ENROLLMENTS_KEY));
+      return Array.isArray(list) ? list : [];
+    } catch { return []; }
+  };
+  const saveEnrollments = () => { try { localStorage.setItem(ENROLLMENTS_KEY, JSON.stringify(enrollments)); } catch {} };
+
+  let enrollments = loadEnrollments();
+
+  function enrollStudent(courseId) {
+    if (!currentStudent || !courseId) return false;
+    if (enrollments.some(en => en.courseId === courseId && en.studentEmail === currentStudent.email)) return false;
+    enrollments.push({ courseId, studentEmail: currentStudent.email, ts: Date.now() });
+    saveEnrollments();
+    return true;
+  }
+
+  const studentEmailsOf = email => {
+    const ids = new Set(teacherCourses.filter(c => c.teacherEmail === email).map(c => c.id));
+    const set = new Set();
+    enrollments.forEach(en => { if (ids.has(en.courseId)) set.add(en.studentEmail); });
+    return set;
+  };
+
+  const initialsOf = name => {
+    const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+    return esc(parts.slice(0, 2).map(p => p[0]).join('')) || 'م';
+  };
+
+  /* ===== قسم المدرسين في الصفحة الرئيسية =====
+     لا مدرسين تجريبيين: يظهر القسم بحالة "قريباً" الاحترافية،
+     وبمجرد إنشاء أول حساب مدرس حقيقي يظهر صاحبه هنا تلقائياً. */
+  const teachersGrid = document.getElementById('teachersGrid');
+  const teachersSub = document.getElementById('teachersSub');
+
+  function renderTeachers() {
+    if (!teachers.length) {
+      teachersSub.textContent = 'فريق التدريس سيظهر هنا فور انضمامه — نضع جودة المحتوى في المقام الأول.';
+      teachersGrid.innerHTML = `
+        <div class="grid-empty">
+          <span class="icon-box s3"><svg class="ic"><use href="#i-users"/></svg></span>
+          <h3>لا يوجد مدرسون مضافون بعد</h3>
+          <p>سيظهر هنا فريق التدريس فور انضمامه إلى المنصة — ويمكنك أن تكون أول من ينضم إلينا.</p>
+          <div class="teachers-join">
+            <button class="btn btn-primary" type="button" data-open-teacher data-teacher-tab="tsignup">
+              <svg class="ic"><use href="#i-plus"/></svg>
+              انضم كمدرس
+            </button>
+            <button class="btn btn-ghost" type="button" data-open-teacher data-teacher-tab="tlogin">
+              <svg class="ic"><use href="#i-user"/></svg>
+              بوابة المدرسين
+            </button>
+          </div>
+        </div>`;
+      return;
+    }
+    teachersSub.textContent = 'تعرّف على فريق التدريس في الشعيب — ' + arCount(teachers.length, 'مدرس واحد حتى الآن', 'مدرسان حتى الآن', 'مدرسون حتى الآن') + '.';
+    teachersGrid.innerHTML = teachers.map((t, i) => {
+      const s = subjectOf(t.subject);
+      const list = coursesOf(t.email);
+      const lectureTotal = list.reduce((sum, c) => sum + c.lectures.length, 0);
+      return `
+        <article class="teacher-card">
+          <span class="avatar xl a${(i % 6) + 1}">${initialsOf(t.name)}</span>
+          <h3>${esc(t.name)}</h3>
+          <span class="teacher-role">${esc(s ? s.name : 'مدرس')}</span>
+          <p class="teacher-bio">${esc(t.bio)}</p>
+          <div class="t-meta">
+            <span><svg class="ic"><use href="#i-book"/></svg>${arCount(list.length, 'كورس واحد', 'كورسان', 'كورسات')}</span>
+            <span><svg class="ic"><use href="#i-video"/></svg>${arCount(lectureTotal, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+  /* ===== شبكة الكورسات في الصفحة الرئيسية =====
+     تعرض كورسات المدرسين الحقيقية فقط — وعند عدم وجودها تبقى حالة الانتظار كما هي. */
+  const coursesGrid = document.getElementById('coursesGrid');
+  const coursesSub = document.getElementById('coursesSub');
+
+  function renderHomeCourses() {
+    const list = teacherCourses.slice().sort((a, b) => b.createdAt - a.createdAt);
+    if (!list.length) {
+      coursesSub.textContent = 'ستظهر هنا الكورسات فور إضافتها — تابعنا لتكون أول من يعلم عند انطلاقها.';
+      coursesGrid.innerHTML = `
+        <div class="grid-empty">
+          <span class="icon-box s1"><svg class="ic"><use href="#i-book"/></svg></span>
+          <h3>لا توجد كورسات متاحة حالياً</h3>
+          <p>المنصة جديدة — سيتم إضافة الكورسات وفتح التسجيل قريباً.</p>
+        </div>`;
+      return;
+    }
+    coursesSub.textContent = arCount(list.length, 'كورس واحد منشور حالياً', 'كورسان منشوران حالياً', 'كورسات منشورة حالياً') + ' — التحق بما يناسبك وابدأ التعلم.';
+    coursesGrid.innerHTML = list.map((c, i) => {
+      const s = subjectOf(c.subject);
+      const t = teachers.find(x => x.email === c.teacherEmail);
+      return `
+        <article class="course-card">
+          <div class="course-banner ${s ? s.color.replace('s', 'g') : 'g1'}">
+            <span class="course-tag">${esc(s ? s.name : 'كورس')}</span>
+            <svg class="ic banner-icon"><use href="#${s ? s.icon : 'i-book'}"/></svg>
+          </div>
+          <div class="course-body">
+            <h3>${esc(c.title)}</h3>
+            <div class="course-inst">
+              <span class="avatar sm a${(i % 6) + 1}">${initialsOf(t ? t.name : '')}</span>
+              ${esc(t ? t.name : 'مدرس')}
+            </div>
+            <div class="course-meta">
+              <span><svg class="ic"><use href="#i-list"/></svg>${arCount(c.lectures.length, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+              <span><svg class="ic"><use href="#i-clock"/></svg>أُضيف في ${fmtDate(c.createdAt)}</span>
+            </div>
+            <div class="course-foot">
+              <div class="price"><span class="now free">مجاني</span></div>
+              <button class="btn-enroll" type="button" data-enroll-course="${esc(c.title)}" data-enroll-id="${c.id}">الالتحاق بالكورس</button>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+  coursesGrid.addEventListener('click', e => {
+    const btn = e.target.closest('[data-enroll-course]');
+    if (!btn) return;
+    const course = btn.dataset.enrollCourse;
+    if (currentStudent) {
+      if (btn.dataset.enrollId) {
+        const added = enrollStudent(btn.dataset.enrollId);
+        openDashboard();
+        showToast(added ? 'تم الالتحاق بكورس «' + course + '» بنجاح!' : 'أنت ملتحق بهذا الكورس بالفعل.');
+      } else {
+        openDashboard();
+        showToast('أنت مسجّل الدخول بالفعل — تابع كورساتك من لوحة الطالب.');
+      }
+    } else {
+      openModal();
+      showToast('سجّل دخولك للالتحاق بكورس: ' + course);
+    }
+  });
+
+  /* ===== فتح بوابة المدرسين (تسجيل دخول / إنشاء حساب) ===== */
+  function openTeacherModal(tab) {
+    if (currentTeacher) { openTeacherDashboard(); return; }
+    resetAuthErrors();
+    teacherModal.classList.add('active');
+    teacherModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const target = [...teacherTabs].find(t => t.dataset.tab === tab);
+    if (target && !target.classList.contains('active')) target.click();
+  }
+
+  function closeTeacherModal() {
+    if (teacherModal.contains(document.activeElement)) document.activeElement.blur();
+    teacherModal.classList.remove('active');
+    teacherModal.setAttribute('aria-hidden', 'true');
+    syncBodyScroll();
+  }
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-open-teacher]');
+    if (!btn) return;
+    e.preventDefault();
+    openTeacherModal(btn.dataset.teacherTab || 'tlogin');
+  });
+
+  document.querySelectorAll('[data-close-teacher]').forEach(btn => btn.addEventListener('click', closeTeacherModal));
+  teacherModal.addEventListener('click', e => { if (e.target === teacherModal) closeTeacherModal(); });
+
+  teacherTabs.forEach(tab => tab.addEventListener('click', () => {
+    teacherTabs.forEach(t => t.classList.toggle('active', t === tab));
+    Object.entries(teacherForms).forEach(([key, form]) => form.classList.toggle('active', key === tab.dataset.tab));
+    if (tab.dataset.tab === 'tlogin') {
+      teacherAuthTitle.textContent = 'بوابة المدرسين';
+      teacherAuthSub.textContent = 'سجّل دخولك للوصول إلى لوحة تحكم المدرس';
+    } else {
+      teacherAuthTitle.textContent = 'انضم إلى فريق التدريس';
+      teacherAuthSub.textContent = 'أنشئ حساب مدرس وابدأ بنشر كورساتك على منصة الشعيب';
+    }
+  }));
+
+  const teacherSubjectSelect = document.getElementById('teacherSubjectSelect');
+  SUBJECTS_DATA.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s.key;
+    opt.textContent = s.name;
+    teacherSubjectSelect.appendChild(opt);
+  });
+
+  /* ===== تسجيل دخول المدرسين ===== */
+  teacherForms.tlogin.addEventListener('submit', async e => {
+    e.preventDefault();
+    resetAuthErrors();
+    const email = teacherForms.tlogin.email.value.trim().toLowerCase();
+    const password = teacherForms.tlogin.password.value;
+
+    if (!email) { teacherForms.tlogin.email.classList.add('invalid'); return showError('teacherLoginError', 'يرجى إدخال البريد الإلكتروني.'); }
+    if (!EMAIL_RE.test(email)) { teacherForms.tlogin.email.classList.add('invalid'); return showError('teacherLoginError', 'يرجى إدخال بريد إلكتروني صحيح، مثل: example@alshuaib.com'); }
+    if (!password) { teacherForms.tlogin.password.classList.add('invalid'); return showError('teacherLoginError', 'يرجى إدخال كلمة المرور.'); }
+
+    const account = teachers.find(a => a.email === email);
+    if (!account) { teacherForms.tlogin.email.classList.add('invalid'); return showError('teacherLoginError', 'لا يوجد حساب مدرس مسجّل بهذا البريد الإلكتروني. تأكد من البريد أو أنشئ حساب مدرس جديداً.'); }
+
+    const hash = await hashPassword(password, account.salt);
+    if (hash !== account.hash) { teacherForms.tlogin.password.classList.add('invalid'); return showError('teacherLoginError', 'كلمة المرور غير صحيحة. حاول مرة أخرى.'); }
+
+    startTeacherSession(email, teacherForms.tlogin.remember.checked);
+    teacherForms.tlogin.reset();
+    resetPwToggles(teacherForms.tlogin);
+    closeTeacherModal();
+    openTeacherDashboard();
+    showToast('تم تسجيل الدخول بنجاح، مرحباً بعودتك' + (account.name ? ' يا ' + account.name.split(/\s+/)[0] : '') + '!');
+  });
+
+  /* ===== إنشاء حساب مدرس ===== */
+  teacherForms.tsignup.addEventListener('submit', async e => {
+    e.preventDefault();
+    resetAuthErrors();
+    const name = teacherForms.tsignup.fullname.value.trim();
+    const email = teacherForms.tsignup.email.value.trim().toLowerCase();
+    const password = teacherForms.tsignup.password.value;
+    const confirm = teacherForms.tsignup.confirm.value;
+    const subject = teacherForms.tsignup.subject.value;
+    const phone = teacherForms.tsignup.phone.value.trim();
+    const bio = teacherForms.tsignup.bio.value.trim();
+
+    if (name.length < 2) { teacherForms.tsignup.fullname.classList.add('invalid'); return showError('teacherSignupError', 'يرجى إدخال الاسم الكامل (حرفان على الأقل).'); }
+    if (!email) { teacherForms.tsignup.email.classList.add('invalid'); return showError('teacherSignupError', 'يرجى إدخال البريد الإلكتروني.'); }
+    if (!EMAIL_RE.test(email)) { teacherForms.tsignup.email.classList.add('invalid'); return showError('teacherSignupError', 'يرجى إدخال بريد إلكتروني صحيح، مثل: example@alshuaib.com'); }
+    if (teachers.some(a => a.email === email)) { teacherForms.tsignup.email.classList.add('invalid'); return showError('teacherSignupError', 'هذا البريد الإلكتروني مسجّل مسبقاً كمدرس — سجّل الدخول بدلاً من ذلك.'); }
+    const claimedByStudent = await studentEmailExists(email);
+    if (claimedByStudent === null) { return showError('teacherSignupError', OFFLINE_MSG); }
+    if (claimedByStudent) { teacherForms.tsignup.email.classList.add('invalid'); return showError('teacherSignupError', 'هذا البريد الإلكتروني مستخدم في حساب طالب — استخدم بريداً مختلفاً لحساب المدرس.'); }
+    if (!password) { teacherForms.tsignup.password.classList.add('invalid'); return showError('teacherSignupError', 'يرجى إدخال كلمة المرور.'); }
+    if (password.length < 6) { teacherForms.tsignup.password.classList.add('invalid'); return showError('teacherSignupError', 'كلمة المرور يجب أن تكون 6 أحرف على الأقل.'); }
+    if (!confirm) { teacherForms.tsignup.confirm.classList.add('invalid'); return showError('teacherSignupError', 'يرجى تأكيد كلمة المرور.'); }
+    if (confirm !== password) { teacherForms.tsignup.confirm.classList.add('invalid'); return showError('teacherSignupError', 'كلمتا المرور غير متطابقتين. حاول مرة أخرى.'); }
+    if (!subject) { teacherForms.tsignup.subject.classList.add('invalid'); return showError('teacherSignupError', 'يرجى اختيار المادة التي تدرّسها.'); }
+    if (!phone) { teacherForms.tsignup.phone.classList.add('invalid'); return showError('teacherSignupError', 'يرجى إدخال رقم الهاتف.'); }
+    if (!/^\+?[\d\s-]{7,}$/.test(phone)) { teacherForms.tsignup.phone.classList.add('invalid'); return showError('teacherSignupError', 'يرجى إدخال رقم هاتف صحيح (أرقام فقط، مع إمكانية رمز الدولة مثل +20).'); }
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 8 || phoneDigits.length > 15) { teacherForms.tsignup.phone.classList.add('invalid'); return showError('teacherSignupError', 'رقم الهاتف يجب أن يتكون من 8 إلى 15 رقماً.'); }
+    if (bio.length < 10) { teacherForms.tsignup.bio.classList.add('invalid'); return showError('teacherSignupError', 'يرجى كتابة نبذة قصيرة عنك (10 أحرف على الأقل).'); }
+
+    const salt = makeSalt();
+    const hash = await hashPassword(password, salt);
+    teachers.push({ name, email, salt, hash, subject, phone, bio, createdAt: Date.now() });
+    saveTeachers();
+    refreshTeacherCounter();
+    renderTeachers();
+    startTeacherSession(email, true);
+    teacherForms.tsignup.reset();
+    resetPwToggles(teacherForms.tsignup);
+    closeTeacherModal();
+    openTeacherDashboard();
+    showToast('تم إنشاء حساب المدرس بنجاح! أهلاً بك في فريق الشعيب.');
+  });
+
+  /* ===== لوحة تحكم المدرس ===== */
+  const tdashCoursesEl = document.getElementById('tdashCourses');
+  let openLecturesId = null;
+
+  function openTeacherDashboard() {
+    if (!currentTeacher) return;
+    openLecturesId = null;
+    renderTeacherDashboard();
+    teacherDash.scrollTop = 0;
+    teacherDash.classList.add('active');
+    teacherDash.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeTeacherDashboard() {
+    if (teacherDash.contains(document.activeElement)) document.activeElement.blur();
+    teacherDash.classList.remove('active');
+    teacherDash.setAttribute('aria-hidden', 'true');
+    syncBodyScroll();
+  }
+
+  document.getElementById('tdashBack').addEventListener('click', closeTeacherDashboard);
+  document.getElementById('tdashLogout').addEventListener('click', () => {
+    endTeacherSession();
+    closeCourseModal();
+    closeConfirm();
+    closeTeacherDashboard();
+    showToast('تم تسجيل الخروج بنجاح. نراك قريباً!');
+  });
+  document.getElementById('tdashNewCourse').addEventListener('click', () => openCourseModal());
+
+  function renderTeacherDashboard() {
+    const t = currentTeacher;
+    if (!t) return;
+    const s = subjectOf(t.subject);
+    const list = coursesOf(t.email).slice().sort((a, b) => b.createdAt - a.createdAt);
+
+    document.getElementById('tdashName').textContent = t.name || 'أستاذنا العزيز';
+    document.getElementById('tdashMeta').textContent = (s ? s.name : 'مدرس') + ' — هذه لوحة التحكم الخاصة بك، أنشئ كورساتك وأدر محاضراتك من مكان واحد.';
+    document.getElementById('tdashStatCourses').textContent = list.length;
+    document.getElementById('tdashStatStudents').textContent = studentEmailsOf(t.email).size;
+    document.getElementById('tdashStatLectures').textContent = list.reduce((sum, c) => sum + c.lectures.length, 0);
+
+    document.getElementById('tdashAccName').textContent = t.name || '—';
+    document.getElementById('tdashAccEmail').textContent = t.email;
+    document.getElementById('tdashAccSubject').textContent = s ? s.name : '—';
+    document.getElementById('tdashAccPhone').textContent = t.phone || '—';
+    document.getElementById('tdashAccDate').textContent = fmtDate(t.createdAt);
+
+    tdashCoursesEl.innerHTML = list.length
+      ? '<div class="tc-list">' + list.map(courseAdminHTML).join('') + '</div>'
+      : `<div class="grid-empty">
+          <span class="icon-box s1"><svg class="ic"><use href="#i-book"/></svg></span>
+          <h3>لم تنشئ أي كورس بعد</h3>
+          <p>اضغط على «كورس جديد» لإنشاء أول كورس لك — سيظهر للطلاب فوراً في قسم الكورسات.</p>
+        </div>`;
+  }
+
+  const courseAdminHTML = c => {
+    const s = subjectOf(c.subject);
+    const open = openLecturesId === c.id;
+    const enCount = enrollments.filter(en => en.courseId === c.id).length;
+    const studentsTxt = enCount === 0 ? 'لا يوجد طلاب ملتحقون بعد' : arCount(enCount, 'طالب واحد ملتحق', 'طالبان ملتحقان', 'طلاب ملتحقون');
+    const lecturesHTML = c.lectures.length
+      ? `<ul class="tc-lectures">${c.lectures.map((l, i) => `<li><span class="tc-lec-title">${i + 1}. ${esc(l)}</span><button class="tc-lec-del" type="button" data-lec-delete="${c.id}" data-lec-index="${i}" aria-label="حذف المحاضرة"><svg class="ic"><use href="#i-x"/></svg></button></li>`).join('')}</ul>`
+      : '<p class="tc-empty-note">لا توجد محاضرات في هذا الكورس بعد — أضف أول محاضرة الآن.</p>';
+    return `
+      <article class="tc-card">
+        <div class="tc-top">
+          <span class="tc-badge"><svg class="ic"><use href="#${s ? s.icon : 'i-book'}"/></svg>${esc(s ? s.name : 'مادة دراسية')}</span>
+          <span class="tc-date">أُضيف في ${fmtDate(c.createdAt)}</span>
+        </div>
+        <h4 class="tc-title">${esc(c.title)}</h4>
+        <p class="tc-desc">${esc(c.desc)}</p>
+        <div class="tc-meta-row">
+          <span><svg class="ic"><use href="#i-list"/></svg>${arCount(c.lectures.length, 'محاضرة واحدة', 'محاضرتان', 'محاضرات')}</span>
+          <span><svg class="ic"><use href="#i-users"/></svg>${studentsTxt}</span>
+        </div>
+        <div class="tc-actions">
+          <button class="tc-btn" type="button" data-tc-toggle="${c.id}">
+            <svg class="ic"><use href="${open ? '#i-eye-off' : '#i-list'}"/></svg>${open ? 'إخفاء المحاضرات' : 'إدارة المحاضرات'}
+          </button>
+          <button class="tc-btn" type="button" data-tc-edit="${c.id}">
+            <svg class="ic"><use href="#i-edit"/></svg>تعديل
+          </button>
+          <button class="tc-btn danger" type="button" data-tc-delete="${c.id}">
+            <svg class="ic"><use href="#i-x"/></svg>حذف
+          </button>
+        </div>
+        ${open ? lecturesHTML + `
+        <form class="lec-add" data-lec-add="${c.id}">
+          <input type="text" placeholder="عنوان المحاضرة الجديدة" maxlength="90" aria-label="عنوان المحاضرة الجديدة">
+          <button class="btn btn-primary btn-sm" type="submit">إضافة</button>
+        </form>` : ''}
+      </article>`;
+  };
+
+  /* الصلاحيات: كل عملية تُعاد فيها مطابقة الكورس بالبريد الإلكتروني للمدرس الحالي،
+     فلا يمكن لأي مدرس الوصول إلى كورسات مدرس آخر حتى لو عُدّلت البيانات يدوياً. */
+  tdashCoursesEl.addEventListener('click', e => {
+    if (!currentTeacher) return;
+    const teacherEmail = currentTeacher.email;
+
+    const toggle = e.target.closest('[data-tc-toggle]');
+    if (toggle) {
+      openLecturesId = openLecturesId === toggle.dataset.tcToggle ? null : toggle.dataset.tcToggle;
+      renderTeacherDashboard();
+      return;
+    }
+
+    const edit = e.target.closest('[data-tc-edit]');
+    if (edit) { openCourseModal(edit.dataset.tcEdit); return; }
+
+    const del = e.target.closest('[data-tc-delete]');
+    if (del) {
+      const c = teacherCourses.find(x => x.id === del.dataset.tcDelete && x.teacherEmail === teacherEmail);
+      if (!c) return;
+      openConfirm('حذف الكورس', 'هل أنت متأكد من حذف كورس «' + c.title + '»؟ سيتم حذف جميع محاضراته نهائياً ولا يمكن التراجع عن هذا الإجراء.', () => {
+        const live = teacherCourses.find(x => x.id === c.id && x.teacherEmail === teacherEmail);
+        if (!live) return;
+        teacherCourses = teacherCourses.filter(x => x.id !== c.id);
+        saveTeacherCourses();
+        enrollments = enrollments.filter(en => en.courseId !== c.id);
+        saveEnrollments();
+        refreshCourseViews();
+        showToast('تم حذف الكورس بنجاح.');
+      });
+      return;
+    }
+
+    const lecDel = e.target.closest('[data-lec-delete]');
+    if (lecDel) {
+      const courseId = lecDel.dataset.lecDelete;
+      const index = Number(lecDel.dataset.lecIndex);
+      const c = teacherCourses.find(x => x.id === courseId && x.teacherEmail === teacherEmail);
+      if (!c || !c.lectures[index]) return;
+      const lectureTitle = c.lectures[index];
+      openConfirm('حذف المحاضرة', 'هل أنت متأكد من حذف محاضرة «' + lectureTitle + '»؟ لا يمكن التراجع عن هذا الإجراء.', () => {
+        const live = teacherCourses.find(x => x.id === courseId && x.teacherEmail === teacherEmail);
+        if (!live || !live.lectures[index]) return;
+        live.lectures.splice(index, 1);
+        saveTeacherCourses();
+        refreshCourseViews();
+        showToast('تم حذف المحاضرة بنجاح.');
+      });
+    }
+  });
+
+  tdashCoursesEl.addEventListener('submit', e => {
+    const form = e.target.closest('[data-lec-add]');
+    if (!form || !currentTeacher) return;
+    e.preventDefault();
+    const c = teacherCourses.find(x => x.id === form.dataset.lecAdd && x.teacherEmail === currentTeacher.email);
+    if (!c) return;
+    const title = form.querySelector('input').value.trim();
+    if (!title) return showToast('يرجى كتابة عنوان المحاضرة أولاً.');
+    c.lectures.push(title);
+    saveTeacherCourses();
+    refreshCourseViews();
+    showToast('تمت إضافة المحاضرة بنجاح.');
+  });
+
+  /* ===== نافذة إنشاء/تعديل الكورس ===== */
+  const formCourse = document.getElementById('formCourse');
+  const courseModalTitle = document.getElementById('courseModalTitle');
+  const courseModalSub = document.getElementById('courseModalSub');
+  const courseSubmitBtn = document.getElementById('courseSubmit');
+  let editingCourseId = null;
+
+  function openCourseModal(id) {
+    if (!currentTeacher) return;
+    editingCourseId = id || null;
+    resetAuthErrors();
+    formCourse.reset();
+    if (editingCourseId) {
+      const c = teacherCourses.find(x => x.id === editingCourseId && x.teacherEmail === currentTeacher.email);
+      if (!c) { editingCourseId = null; return showToast('تعذر العثور على هذا الكورس.'); }
+      courseModalTitle.textContent = 'تعديل الكورس';
+      courseModalSub.textContent = 'عدّل بيانات كورسك ثم اضغط حفظ التعديلات';
+      courseSubmitBtn.textContent = 'حفظ التعديلات';
+      formCourse.elements.title.value = c.title;
+      formCourse.elements.desc.value = c.desc;
+    } else {
+      courseModalTitle.textContent = 'كورس جديد';
+      courseModalSub.textContent = 'أضف كورساً جديداً إلى قائمتك التعليمية';
+      courseSubmitBtn.textContent = 'إنشاء الكورس';
+    }
+    courseModal.classList.add('active');
+    courseModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCourseModal() {
+    if (courseModal.contains(document.activeElement)) document.activeElement.blur();
+    courseModal.classList.remove('active');
+    courseModal.setAttribute('aria-hidden', 'true');
+    editingCourseId = null;
+    syncBodyScroll();
+  }
+
+  document.querySelectorAll('[data-close-course]').forEach(btn => btn.addEventListener('click', closeCourseModal));
+  courseModal.addEventListener('click', e => { if (e.target === courseModal) closeCourseModal(); });
+
+  formCourse.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!currentTeacher) return;
+    resetAuthErrors();
+    const title = formCourse.elements.title.value.trim();
+    const desc = formCourse.elements.desc.value.trim();
+    const teacherEmail = currentTeacher.email;
+
+    if (title.length < 3) { formCourse.elements.title.classList.add('invalid'); return showError('courseError', 'يرجى إدخال عنوان الكورس (3 أحرف على الأقل).'); }
+    if (desc.length < 10) { formCourse.elements.desc.classList.add('invalid'); return showError('courseError', 'يرجى كتابة وصف قصير للكورس (10 أحرف على الأقل).'); }
+
+    if (editingCourseId) {
+      const c = teacherCourses.find(x => x.id === editingCourseId && x.teacherEmail === teacherEmail);
+      if (!c) return showError('courseError', 'تعذر العثور على الكورس المطلوب تعديله.');
+      c.title = title;
+      c.desc = desc;
+      saveTeacherCourses();
+      closeCourseModal();
+      refreshCourseViews();
+      showToast('تم حفظ تعديلات الكورس بنجاح.');
+    } else {
+      const newCourse = { id: uid(), teacherEmail, subject: currentTeacher.subject, title, desc, lectures: [], createdAt: Date.now() };
+      teacherCourses.push(newCourse);
+      saveTeacherCourses();
+      openLecturesId = newCourse.id;
+      closeCourseModal();
+      refreshCourseViews();
+      showToast('تم إنشاء الكورس بنجاح! أضف محاضراته الآن من خلال «إدارة المحاضرات».');
+    }
+  });
+
+  /* ===== نافذة التأكيد قبل الحذف ===== */
+  let confirmAction = null;
+
+  function openConfirm(title, msg, onOk, okText) {
+    confirmAction = onOk;
+    document.getElementById('confirmTitle').textContent = title;
+    document.getElementById('confirmMsg').textContent = msg;
+    document.getElementById('confirmOk').textContent = okText || 'نعم، احذف';
+    confirmModal.classList.add('active');
+    confirmModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeConfirm() {
+    if (confirmModal.contains(document.activeElement)) document.activeElement.blur();
+    confirmModal.classList.remove('active');
+    confirmModal.setAttribute('aria-hidden', 'true');
+    confirmAction = null;
+    syncBodyScroll();
+  }
+
+  document.getElementById('confirmCancel').addEventListener('click', closeConfirm);
+  document.getElementById('confirmOk').addEventListener('click', () => {
+    const action = confirmAction;
+    closeConfirm();
+    if (action) action();
+  });
+  confirmModal.addEventListener('click', e => { if (e.target === confirmModal) closeConfirm(); });
+
+  /* ===== تحديث كل الواجهات المرتبطة بالمدرسين والكورسات ===== */
+  function refreshCourseViews() {
+    renderTeacherDashboard();
+    renderTeachers();
+    renderHomeCourses();
+    renderSubjects();
+    refreshCourseCounter();
+  }
+
+  function refreshTeacherCounter() {
+    const el = document.getElementById('statTeachers');
+    el.dataset.target = teacherCount();
+    if (el.dataset.animated) animateCounter(el);
+  }
+
+  function refreshCourseCounter() {
+    const el = document.getElementById('statCourses');
+    el.dataset.target = totalCourses();
+    if (el.dataset.animated) animateCounter(el);
+  }
+
+  renderTeachers();
+  renderHomeCourses();
+
+  /* ===== العدادات =====
+     القيم الفعلية: الطلاب من حسابات الطلاب المسجّلة فعلياً، والكورسات من كورسات المواد
+     وكورسات المدرسين المنشورة، والمدرسون من حسابات المدرسين المسجّلة فعلياً (بلا تكرار)،
+     والمواد من SUBJECTS_DATA. */
+  document.getElementById('statStudents').dataset.target = 0;
+  document.getElementById('statCourses').dataset.target = totalCourses();
+  document.getElementById('statTeachers').dataset.target = teacherCount();
+  document.getElementById('statSubjects').dataset.target = SUBJECTS_DATA.length;
+
+  const counters = document.querySelectorAll('.stat-num');
+  const animateCounter = el => {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const from = parseInt(el.textContent.replace(/[^\d]/g, ''), 10) || 0;
+    const duration = 1500;
+    const start = performance.now();
+    const step = now => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(from + (target - from) * eased).toLocaleString('en-US') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        entry.target.dataset.animated = '1';
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(c => counterObserver.observe(c));
+
+  function refreshStudentCounter() {
+    return api('/api/stats').then(({ ok, data }) => {
+      if (!ok) return;
+      const el = document.getElementById('statStudents');
+      el.dataset.target = data.students;
+      if (el.dataset.animated) animateCounter(el);
+    }).catch(() => {});
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "alshuaib",
+  "version": "1.0.0",
+  "private": true,
+  "description": "منصة الشعيب التعليمية — خادم Node.js بلا تبعيات خارجية (node:http + node:sqlite)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --env-file-if-exists=.env --disable-warning=ExperimentalWarning server.js"
+  },
+  "engines": {
+    "node": ">=22.9.0"
+  }
+}
